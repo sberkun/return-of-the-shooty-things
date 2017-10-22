@@ -1,15 +1,28 @@
 <html>
   <body>
     <p id='server-time'>Connecting...</p>
+    <br>
+    <br>
+    <form id="form1">
+      <input type="text" name="value1" placeholder="Mickey">
+      <input type="submit" value="Submit">
+    </form> 
     <script>
       var HOST = location.origin.replace(/^http/, 'ws');
       var ws = new WebSocket(HOST);
+      ws.onmessage = function (event) {
+        el.innerHTML = 'Server time: ' + event.data;
+      };
+      
       var el = document.getElementById('server-time');
       el.onclick = function(){
         ws.send('hi');
       };
-      ws.onmessage = function (event) {
-        el.innerHTML = 'Server time: ' + event.data;
+      form1.onsubmit = function(e){
+    	  e.preventDefault();
+        ws.send(form1.value1.value);
+        form1.value1.value = '';
+        return false;
       };
     </script>
   </body>
