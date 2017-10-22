@@ -15,7 +15,11 @@ const wss = new SocketServer({ server });
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  ws.on('message',(message) => ws.send(message));
+  ws.gameObject = {name:""};
+  ws.on('message',(message) => {
+    ws.gameObject['name'] = message;
+    ws.send(ws.gameObject['name']);
+  });
   ws.on('close', () => console.log('Client disconnected'));
 });
 
