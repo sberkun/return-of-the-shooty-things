@@ -10,13 +10,13 @@
     <script>
       var HOST = location.origin.replace(/^http/, 'ws');
       var ws = new WebSocket(HOST);
-      ws.onmessage = function (event) {
-        el.innerHTML = 'Server time: ' + event.data;
-      };
-      
+
       var el = document.getElementById('server-time');
       el.onclick = function(){
         ws.send('hi');
+      };
+      ws.onmessage = function (event) {
+        el.innerHTML = 'Server time: ' + event.data;
       };
       form1.onsubmit = function(e){
     	  e.preventDefault();
