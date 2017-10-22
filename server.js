@@ -25,6 +25,6 @@ wss.on('connection', (ws) => {
 
 setInterval(() => {
   wss.clients.forEach((client) => {
-    client.send(client.gameObject['name']+" "+new Date().toTimeString());
+    client.send(wss.clients.length+" "+new Date().toTimeString());
   });
 }, 1000);
