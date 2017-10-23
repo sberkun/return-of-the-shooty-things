@@ -14,8 +14,10 @@
       var ws = new WebSocket(HOST);
 
       var els = document.getElementsByClassName('ccc');
+      var bForCCC = true,ccc = function(m){if(bForCCC)bforCCC=confirm(m);};
 
       ws.onmessage = function (event) {
+        ccc('hi');
         var case = parseInt(event.data.substring(0,3));
         els[case].innerHTML = event.data.substring(3);
       };
