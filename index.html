@@ -19,7 +19,7 @@
       ws.onmessage = function (event) {
         ccc('hi');
         //var case = parseInt(event.data.substring(0,3));
-        els[0].innerHTML = event.data;
+        els[0].innerHTML = event.data.toString().substring(3);
       };
       form1.onsubmit = function(e){
     	  e.preventDefault();
