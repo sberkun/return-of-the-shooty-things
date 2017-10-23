@@ -1,8 +1,8 @@
 <html>
   <body>
-    <p id='server-time'>Connecting...</p>
-    <p id='users-online'>Connecting...</p>
-    <p id='username'>Connecting...</p>
+    <p>Your username: <span class='ccc'>Connecting...</span> </p>
+    <p>People online: <span class='ccc'>Connecting...</span> </p>
+    <p>Server time: <span class='ccc'>Connecting...</span> </p>
     <br>
     <br>
     <form id="form1">
@@ -13,12 +13,11 @@
       var HOST = location.origin.replace(/^http/, 'ws');
       var ws = new WebSocket(HOST);
 
-      var el = document.getElementById('server-time');
-      el.onclick = function(){
-        ws.send('hi');
-      };
+      var els = document.getElementsByClassName('ccc');
+
       ws.onmessage = function (event) {
-        el.innerHTML = 'Server time: ' + event.data;
+        var case = parseInt(event.data.substring(0,3));
+        els[case].innerHTML = event.data.substring(3);
       };
       form1.onsubmit = function(e){
     	  e.preventDefault();
