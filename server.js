@@ -19,16 +19,18 @@ wss.on('connection', (ws) => {
   users[ws.id] = {name:""};
   ws.on('message',(message) => {
     users[ws.id]['name'] = message;
-    ws.send(users[ws.id]['name']);
+    ws.send('00:'+users[ws.id]['name']);
   });
   ws.on('close', () => {
     users.splice(ws.id,1);
     console.log('Client disconnected');
+    wss.clients.forEach((client) => client.send('01:'+wss.clients.length));
   });
+  wss.clients.forEach((client) => client.send('01:'+wss.clients.length));
 });
 
 setInterval(() => {
   wss.clients.forEach((client) => {
-    client.send(wss.clients.length+" "+new Date().toTimeString());
+    client.send('02:'+new Date().toTimeString());
   });
 }, 1000);
