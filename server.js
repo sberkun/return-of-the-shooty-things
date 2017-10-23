@@ -16,7 +16,7 @@ const users = [];
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  users[ws.id] = {name:""};
+  users[ws.id] = {name:"anonymous"};
   ws.on('message',(message) => {
     users[ws.id]['name'] = message;
     ws.send('00:'+users[ws.id]['name']);
@@ -26,6 +26,7 @@ wss.on('connection', (ws) => {
     console.log('Client disconnected');
     wss.clients.forEach((client) => client.send('01:'+wss.clients.length));
   });
+  ws.send('00:'+users[ws.id]['name']);
   wss.clients.forEach((client) => client.send('01:'+wss.clients.length));
 });
 
