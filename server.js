@@ -27,6 +27,7 @@ wss.on('connection', (ws) => {
     wss.clients.forEach((client) => client.send('01:'+wss.clients.length));
   });
   ws.send('00:'+users[ws.id]['name']);
+  ws.send('02:'+new Date().toTimeString());
   wss.clients.forEach((client) => client.send('01:'+wss.clients.length));
 });
 
