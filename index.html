@@ -18,8 +18,8 @@
 
       ws.onmessage = function (event) {
         ccc('hi');
-        var case = parseInt(event.data.substring(0,3));
-        els[case].innerHTML = event.data.substring(3);
+        //var case = parseInt(event.data.substring(0,3));
+        els[0].innerHTML = event.data;
       };
       form1.onsubmit = function(e){
     	  e.preventDefault();
