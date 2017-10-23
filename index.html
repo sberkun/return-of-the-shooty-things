@@ -17,8 +17,8 @@
       var bForCCC=true,ccc = function(mmm){if(bForCCC) bForCCC=confirm(mmm);};
 
       ws.onmessage = function (event) {
-        var case = 0;//parseInt(event.data.toString().substring(0,3));
-        els[case].innerHTML = event.data.toString().substring(3);
+        var whichmessage = parseInt(event.data.toString().substring(0,3));
+        els[whichmessage].innerHTML = event.data.toString().substring(3);
       };
       form1.onsubmit = function(e){
     	  e.preventDefault();
