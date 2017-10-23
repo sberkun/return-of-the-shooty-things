@@ -1,8 +1,8 @@
 <html>
   <body>
-    <p>Your username: <span class='ccc'>Connecting...</span> </p>
-    <p>People online: <span class='ccc'>Connecting...</span> </p>
-    <p>Server time: <span class='ccc'>Connecting...</span> </p>
+    <p>Your username: <span class='els'>Connecting...</span> </p>
+    <p>People online: <span class='els'>Connecting...</span> </p>
+    <p>Server time: <span class='els'>Connecting...</span> </p>
     <br>
     <br>
     <form id="form1">
@@ -13,7 +13,7 @@
       var HOST = location.origin.replace(/^http/, 'ws');
       var ws = new WebSocket(HOST);
 
-      var els = document.getElementsByClassName('ccc');
+      var els = document.getElementsByClassName('els');
       var bForCCC = true,ccc = function(m){if(bForCCC)bforCCC=confirm(m);};
 
       ws.onmessage = function (event) {
