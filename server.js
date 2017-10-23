@@ -12,15 +12,19 @@ const server = express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const wss = new SocketServer({ server });
+const users = [];
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  ws.gameObject = {name:""};
+  users[ws.id] = {name:""};
   ws.on('message',(message) => {
-    ws.gameObject['name'] = message;
-    ws.send(ws.gameObject['name']);
+    users[ws.id]['name'] = message;
+    ws.send(users[ws.id]['name']);
   });
-  ws.on('close', () => console.log('Client disconnected'));
+  ws.on('close', () => {
+    users.splice(ws.id,1);
+    console.log('Client disconnected');
+  });
 });
 
 setInterval(() => {
