@@ -1,31 +1,7 @@
 <html>
   <body>
-    <p>Your username: <span class='els'>Connecting...</span> </p>
-    <p>People online: <span class='els'>Connecting...</span> </p>
-    <p>Server time: <span class='els'>Connecting...</span> </p>
-    <br>
-    <br>
-    <form id="form1">
-      <input type="text" name="value1" placeholder="rite stuf">
-      <input type="submit" value="Submit">
-    </form> 
-    <script>
-      var HOST = location.origin.replace(/^http/, 'ws');
-      var ws = new WebSocket(HOST);
-
-      var els = document.getElementsByClassName('els');
-      var bForCCC=true,ccc = function(mmm){if(bForCCC) bForCCC=confirm(mmm);};
-
-      ws.onmessage = function (event) {
-        var whichmessage = parseInt(event.data.toString().substring(0,3));
-        els[whichmessage].innerHTML = event.data.toString().substring(3);
-      };
-      form1.onsubmit = function(e){
-        e.preventDefault();
-        ws.send(form1.value1.value);
-        form1.value1.value = '';
-        return false;
-      };
-    </script>
+    <canvas id="myCanvas"></canvas>
+    <script src="frontendsetup.js"></script>
+    <script src="game.js"></script>
   </body>
 </html>
