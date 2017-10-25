@@ -1,6 +1,6 @@
 
 (function(){
-var CENTERSCREEN = {statswidth:200,x:canvas.width/2,y:3*canvas.height/4,zoom:false,screen_centering:0,};//feel free to change
+var CENTERSCREEN = {statswidth:200,x:myCanvas.width/2,y:3*myCanvas.height/4,zoom:false,screen_centering:0,};//feel free to change
   CENTERSCREEN.x+=CENTERSCREEN.statswidth*0.5;
 //screencentering 0 is turretcentered, 1 is hull centered
 
