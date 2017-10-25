@@ -468,3 +468,4 @@ var UPDATEALL = function() {
 
 window.setTimeout(function(){window.setInterval(UPDATEALL,15);}, 500);
 
+alert("game set up all good");
