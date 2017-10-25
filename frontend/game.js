@@ -1,5 +1,5 @@
 
-{
+(function(){
 var CENTERSCREEN = {statswidth:200,x:canvas.width/2,y:3*canvas.height/4,zoom:false,screen_centering:0,};//feel free to change
   CENTERSCREEN.x+=CENTERSCREEN.statswidth*0.5;
 //screencentering 0 is turretcentered, 1 is hull centered
@@ -286,8 +286,8 @@ ply.updateCanDieYet = function(){
 
 
 
-}//player constructors
-{
+}());//player constructors
+(function(){
 var drawActionSubFunction = function(rrr){
   rect(-10,-10,canvas.width+20,canvas.width+20);
   
@@ -357,8 +357,8 @@ var drawScene = function(){
     drawStatsSubFunction();
 };
 
-}//drawScene function
-{
+}());//drawScene function
+(function(){
 var mouse_control = false;
 var turret_control = true;
 var mouseX = 0;
@@ -430,7 +430,7 @@ document.addEventListener('mousemove',function(mouseE){
   mouseX = mouseE.clientX;
   mouseY = mouseE.clientY;
 });
-}//keyboard input
+}());//keyboard input
 
 
 var UPDATEALL = function() {
