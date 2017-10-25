@@ -44,3 +44,6 @@
     line(25,375,375,25);
   }
   loadingScreen();
+
+
+alert("set up all good");
