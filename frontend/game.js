@@ -1,5 +1,5 @@
 
-(function(){
+
 var CENTERSCREEN = {statswidth:200,x:myCanvas.width/2,y:3*myCanvas.height/4,zoom:false,screen_centering:0,};//feel free to change
   CENTERSCREEN.x+=CENTERSCREEN.statswidth*0.5;
 //screencentering 0 is turretcentered, 1 is hull centered
@@ -168,11 +168,10 @@ var createOBsArena = function(){
   objects.push(new RO(-ws,-ws-wt,2*ws+wt,wt));
 };
 createOBsArena();
-}());//set everything up
 
-                                                                              alert("0");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-(function(){
 var ply = {
     vx:0,vy:0,friction:0.9,getFriction:Math.random(),
     x:0,y:0,rc:0,rt:0,speed:0.4,
@@ -288,13 +287,10 @@ ply.updateCanDieYet = function(){
 };
 
 
-
-}());//player constructors
-
-                                                                                                  alert("1");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-(function(){
 var drawActionSubFunction = function(rrr){
   rect(-10,-10,canvas.width+20,canvas.width+20);
   
@@ -364,11 +360,10 @@ var drawScene = function(){
     drawStatsSubFunction();
 };
 
-}());//drawScene function
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                                                                          alert("2");
 
-(function(){
 var mouse_control = false;
 var turret_control = true;
 var mouseX = 0;
@@ -440,7 +435,10 @@ document.addEventListener('mousemove',function(mouseE){
   mouseX = mouseE.clientX;
   mouseY = mouseE.clientY;
 });
-}());//keyboard input
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 var UPDATEALL = function() {
