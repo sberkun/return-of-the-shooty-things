@@ -9,6 +9,7 @@ const INDEX = path.join(__dirname, 'index.html');
 
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
+  .use(express.static(path.join(__dirname, 'frontend')))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const wss = new SocketServer({ server });
