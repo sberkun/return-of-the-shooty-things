@@ -292,11 +292,11 @@ ply.updateCanDieYet = function(){
 
 
 var drawActionSubFunction = function(rrr){
-  rect(-10,-10,canvas.width+20,canvas.width+20);
+  rect(-10,-10,myCanvas.width+20,myCanvas.width+20);
   
   if(CENTERSCREEN.zoom){
       DRAW.scale(0.5,0.5);
-      DRAW.translate((canvas.width+200)*0.5,canvas.height*0.5);
+      DRAW.translate((myCanvas.width+200)*0.5,myCanvas.height*0.5);
   }
   
   DRAW.save();
@@ -321,7 +321,7 @@ var drawStatsSubFunction = function(){
   DRAW.save();
   
     DRAW.lineWidth = 1;
-    rect(-10,-10,CENTERSCREEN.statswidth+10,canvas.height+20);
+    rect(-10,-10,CENTERSCREEN.statswidth+10,myCanvas.height+20);
   
     rect(10,50,CENTERSCREEN.statswidth-20,20);
     DRAW.fillStyle = "rgb(100,100,255)";
@@ -429,7 +429,7 @@ document.addEventListener('keyup',function(evant){
 });
 document.addEventListener('click',function(mouseE){
   if(mouseE.clientX<CENTERSCREEN.statswidth) mouse_control = !mouse_control;
-  if(mouseE.clientY<canvas.height/2)  turret_control = !turret_control;
+  if(mouseE.clientY<myCanvas.height/2)  turret_control = !turret_control;
 });
 document.addEventListener('mousemove',function(mouseE){
   mouseX = mouseE.clientX;
