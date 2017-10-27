@@ -1,100 +1,23 @@
-
-
-var CENTERSCREEN = {statswidth:200,x:myCanvas.width/2,y:3*myCanvas.height/4,zoom:false,screen_centering:0,};//feel free to change
+var CENTERSCREEN = {statswidth:200,x:myCanvas.width/2,y:3*myCanvas.height/4,zoom:false,};//feel free to change
   CENTERSCREEN.x+=CENTERSCREEN.statswidth*0.5;
-//screencentering 0 is turretcentered, 1 is hull centered
 
 var objects = [];
 var bullets = [];
-var NPCs = [];
-var NPC = function(x,y,s,t,d){
-  this.x = x;
-  this.y = y;
-  this.s = s;//speed
-  this.t = t;//time
-  this.d = d;//diameter
-  this.st = t;
-  this.drawing = function(){
-    DRAW.save();
-    DRAW.fillStyle = "rgb("+
-      parseInt(100+155*(this.t/(this.st+0.1)))+","+
-      parseInt(100-100*(this.t/(this.st+0.1)))+","+
-      parseInt(100-100*(this.t/(this.st+0.1)))+")";
-    circle(this.x-ply.x+CENTERSCREEN.x,this.y-ply.y+CENTERSCREEN.y,this.d*0.5);
-    DRAW.restore();
-  };
-  this.collideOB = function(){
-    for(var b in objects){
-      if(objects[b].collideWithCircle(this)) return true;
-    }
-    return false;
-  };
-  this.updateCanDieYet = function(){
-    var rr = Math.atan((this.x-ply.x)/(this.y-ply.y));
-    var sign = (this.y<ply.y)?1:-1;
-    
+var people = [];
 
-    this.x+=this.s*Math.sin(rr)*sign;
-    this.y+=this.s*Math.cos(rr)*sign;
-    if(this.collideOB()){
-      this.x-=this.s*Math.sin(rr)*sign;
-      this.y-=this.s*Math.cos(rr)*sign;
-    }
-    
-    
-    if(Math.random()<0.1) bullets.push(new bullet(
-        this.x+this.d*0.5*(Math.sin(rr))*sign,
-        this.y+this.d*0.5*(Math.cos(rr))*sign,
-        6,
-        (ply.y<this.y)?rr:rr+Math.PI,
-        100,5,"NPC"
-    ));
-    
-    if(this.t<=0){
-      document.getElementById("score").innerHTML = parseInt(document.getElementById("score").innerHTML)
-        +2000-parseInt(Math.sqrt(distsqrd(500,500,ply.x,ply.y)));
-      return true;
-    }else{
-      return false;
-    }
-  };
-};
 var RO = function(x,y,w,h){
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-    this.cx = this.x+this.w/2;
-    this.cy = this.y+this.h/2;
+    this.cx = this.x+this.w/2; //centerX
+    this.cy = this.y+this.h/2; //centerY
     this.bubbleR = Math.sqrt(this.w*this.w+this.h*this.h)/2;
     this.drawing = function(){
         DRAW.lineWidth = 3;
         rect(this.x-ply.x+CENTERSCREEN.x,this.y - ply.y+CENTERSCREEN.y,
             this.w,this.h);
         DRAW.lineWidth = 1;
-    };
-    this.collideWithCircle = function(crasher){
-      if(distsqrd(this.cx,this.cy,crasher.x,crasher.y)<=
-        (this.bubbleR+crasher.d*0.5)*(this.bubbleR+crasher.d*0.5)){
-          if(
-              crasher.x>this.x&&
-              crasher.x<this.x+this.w&&
-              crasher.y+crasher.d*0.5>this.y&&
-              crasher.y-crasher.d*0.5<this.y+this.h
-          ){return true;}
-          if( 
-              crasher.y>this.y&&
-              crasher.y<this.y+this.h&&
-              crasher.x+crasher.d/2>this.x&&
-              crasher.x-crasher.d/2<this.x+this.w
-          ){return true;}
-          var rrsqrd = crasher.d*crasher.d*0.25;
-          if(distsqrd(crasher.x,crasher.y,this.x,this.y)<rrsqrd){return true;}
-          if(distsqrd(crasher.x,crasher.y,this.x,this.y+this.h)<rrsqrd){return true;}
-          if(distsqrd(crasher.x,crasher.y,this.x+this.w,this.y)<rrsqrd){return true;}
-          if(distsqrd(crasher.x,crasher.y,this.x+this.w,this.y+this.h)<rrsqrd){return true;}
-      }
-      return false;
     };
 };
 var bullet = function(x,y,s,r,t,d,owner){
@@ -107,51 +30,15 @@ var bullet = function(x,y,s,r,t,d,owner){
     this.d = d;//diameter
     this.vx = 0-this.s*Math.sin(this.r);
     this.vy = 0-this.s*Math.cos(this.r);
-    this.collideable = true;
-    this.collideWithNPC = function(crasher){
-        if(distsqrd(this.x,this.y,crasher.x,crasher.y)
-          <=((crasher.d+this.d)*0.5)*((crasher.d+this.d)*0.5)){
-            crasher.t-= this.d*this.d;
-            return true;
-        }
-        return false;
-    };
     this.updateCanDieYet = function(){
         if(this.t--<0){return true;}
         this.x+=this.vx;
         this.y+=this.vy;
-        if(this.collideable){
-          for(var a in objects){
-              if(objects[a].collideWithCircle(this)) return true;
-          }
-          if(this.owner=="ply") for(var c in NPCs){
-            if(this.collideWithNPC(NPCs[c])) return true;
-          }
-          if(this.owner=="NPC"){
-            if(distsqrd(this.x,this.y,ply.x,ply.y)
-              <=((ply.d+this.d)*0.5)*((ply.d+this.d)*0.5)){
-                ply.hull.t-= this.d*this.d;
-                return true;
-            }
-          }
-        }
-        this.collideable = true;
         return false;
     };
     this.drawing = function(){
         circle(this.x-ply.x+CENTERSCREEN.x,this.y-ply.y+CENTERSCREEN.y,this.d);
     };
-};
-
-
-var bulletCollisionPruning = function(){
-  /*for(var ba in bullets) for(var bb in bullets){
-    if(distsqrd(bullets[ba].x,bullets[ba].y,bullets[bb].x,bullets[bb].y)
-        <(bullets[ba].d+bullets[bb].d)*(bullets[ba].d+bullets[bb].d)*0.25
-        &&bullets[ba].owner!=bullets[bb].owner){
-        bullets[ba].t-=bullets[bb].d*bullets[bb].d;bullets[bb].t-=bullets[ba].d*bullets[ba].d;  
-    }
-  }*/
 };
 
 var createOBsArena = function(){
@@ -175,7 +62,7 @@ createOBsArena();
 var ply = {
     vx:0,vy:0,friction:0.9,getFriction:Math.random(),
     x:0,y:0,rc:0,rt:0,speed:0.4,
-    d:60,
+    d:60, //diameter
 
     hull:{
       drawing:function(){
@@ -203,14 +90,11 @@ var ply = {
         bulletspeed:6
     }
 };
-ply.collideOB = function(){
-  for(var b in objects){
-    if(objects[b].collideWithCircle(this)) return true;
-  }
-  return false;
+ply.die = function(){
+  document.body.innerHTML = "ur bad kid";
 };
 ply.updateCanDieYet = function(){
-  if(this.hull.t<0){ document.body.innerHTML = "ur bad kid"; return true;}
+  if(this.hull.t<0) return true;
   if(this.hull.t<this.hull.st) this.hull.t+=this.hull.regen;
   
   var turnnn = Math.PI/180;
