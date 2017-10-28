@@ -46,4 +46,3 @@
   loadingScreen();
 
 
-alert("set up all good");
