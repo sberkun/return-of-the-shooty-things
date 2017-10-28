@@ -60,8 +60,8 @@ createOBsArena();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var ply = {
-    vx:0,vy:0,friction:0.9,getFriction:0.99,
-    x:0,y:0,rc:0,rt:0,speed:0.4,
+    vx:0,vy:0,friction:0.9,getFriction:0.9,
+    x:0,y:0,rt:0,speed:0.4,
     d:60, //diameter
 
     drawing:function(){
@@ -76,11 +76,15 @@ var ply = {
         DRAW.fill();
         DRAW.stroke();
         DRAW.fillStyle = "rgb(255,255,255)";
+        DRAW.lineWidth = 3;
+        line(CENTERSCREEN.x,CENTERSCREEN.y,
+             CENTERSCREEN.x,CENTERSCREEN.y-ply.turret.shaftlength);
     },
     hull:{
       st: 50000,
       t:  50000,
-      regen: 200
+      regen: 200,
+      turnnn: Math.PI/180,
     },
     turret1:{
         numshots:5,
@@ -93,59 +97,14 @@ var ply = {
         //add stuff later, defence weapon............................................................ 
     },
 };
-ply.turret1.fire = function(){
-};
-ply.turret2.fire = function(){
-}
-ply.die = function(){
-  document.body.innerHTML = "ur bad kid";
-};
-ply.updateCanDieYet = function(){
-  if(this.hull.t<0) return true;
-  if(this.hull.t<this.hull.st) this.hull.t+=this.hull.regen;
-  
-  var turnnn = Math.PI/180;
-  var friccc = 1-0.6*(ply.getFriction-ply.friction)/(1-ply.friction);
-  
-
-
-  if(cuc){
-      ply.vx-=ply.speed*Math.sin(ply.rc)*friccc;
-      ply.vy-=ply.speed*Math.cos(ply.rc)*friccc;
-  }
-  if(cdc){
-      ply.vx+=ply.speed*Math.sin(ply.rc)*friccc;
-      ply.vy+=ply.speed*Math.cos(ply.rc)*friccc;
-  }
-  if(clc){ 
-      ply.vy-=ply.speed*Math.sin(ply.rc)*friccc;       //will this work maybe switch..................................
-      ply.vx-=ply.speed*Math.cos(ply.rc)*friccc;
-  }
-  if(crc){ 
-      ply.vy-=ply.speed*Math.sin(ply.rc)*friccc;
-      ply.vx-=ply.speed*Math.cos(ply.rc)*friccc;
-  }
-  if(www){
-      ply.turret1.fire();
-  }
-  if(sss){
-      ply.turret2.fire();
-  }
-  if(aaa){
-    ply.rc+=turnnn;
-  }
-  if(ddd){
-    ply.rc-=turnnn;
-  }
-  
-  /*
-  if(fireready){if(fireon){
+ply.turret1.fire = function(fff){
+    if(fireready){if(fff){
       for(var a=ply.turret.numshots;a>0;a--){
         bullets.push(new bullet(
-            ply.x-ply.turret.shaftlength*(Math.sin(ply.rc+ply.rt)),
-            ply.y-ply.turret.shaftlength*(Math.cos(ply.rc+ply.rt)),
+            ply.x-ply.turret.shaftlength*(Math.sin(ply.rt)),
+            ply.y-ply.turret.shaftlength*(Math.cos(ply.rt)),
             ply.turret.bulletspeed,
-            (((ply.rt+ply.rc+(Math.random()-0.5)*ply.turret.accuracy)
+            (((ply.rt+(Math.random()-0.5)*ply.turret.accuracy)
               %(2*Math.PI))+(2*Math.PI))%(2*Math.PI),
             100,50,"ply"
         ));
@@ -154,24 +113,57 @@ ply.updateCanDieYet = function(){
       fireready = false;
   }}
   else if(firetime++>ply.turret.reloadtime){fireready = true;firetime=0;}
+};
+ply.turret2.fire = function(fff){
+}
+ply.die = function(){
+  document.body.innerHTML = "ur bad kid";
+};
+ply.updateCanDieYet = function(){
+  if(this.hull.t<0) return true;
+  if(this.hull.t<this.hull.st) this.hull.t+=this.hull.regen;
   
-  */
+  var friccc = 1; //later, environmental friction
+  
+
+  if(cuc){
+      ply.vx-=ply.speed*Math.sin(ply.rt)*friccc;
+      ply.vy-=ply.speed*Math.cos(ply.rt)*friccc;
+  }
+  if(cdc){
+      ply.vx+=ply.speed*Math.sin(ply.rt)*friccc;
+      ply.vy+=ply.speed*Math.cos(ply.rt)*friccc;
+  }
+  if(clc){ 
+      ply.vy-=ply.speed*Math.sin(ply.rt)*friccc;       //will this work maybe switch..................................
+      ply.vx-=ply.speed*Math.cos(ply.rt)*friccc;
+  }
+  if(crc){ 
+      ply.vy-=ply.speed*Math.sin(ply.rt)*friccc;
+      ply.vx-=ply.speed*Math.cos(ply.rt)*friccc;
+  }
+  if(true){
+    ply.turret1.fire(www);
+  }
+  if(true){
+      ply.turret2.fire(sss);
+  }
+  if(aaa){
+    ply.rt+=ply.hull.turnnn;
+  }
+  if(ddd){
+    ply.rt-=ply.hull.turnnn;
+  }
+  
   
   ply.x+=ply.vx;
   ply.y+=ply.vy;
   
-  if(ply.collideOB()){
-    ply.x-=ply.vx;
-    ply.y-=ply.vy;
-    ply.vx = 0;
-    ply.vy = 0;
-  }
-  else{
-    ply.vx = ply.vx*ply.getFriction;
-    ply.vy = ply.vy*ply.getFriction;
-    if(Math.abs(ply.vx)<0.005) ply.vx = 0;
-    if(Math.abs(ply.vy)<0.005) ply.vy = 0;
-  }
+
+  ply.vx = ply.vx*ply.getFriction;
+  ply.vy = ply.vy*ply.getFriction;
+  if(Math.abs(ply.vx)<0.005) ply.vx = 0;
+  if(Math.abs(ply.vy)<0.005) ply.vy = 0;
 };
 
 
@@ -223,28 +215,9 @@ var drawStatsSubFunction = function(){
 
 var drawScene = function(){
     DRAW.save();
-    
       drawActionSubFunction(ply.rc+ply.rt*(1-CENTERSCREEN.screen_centering));
-    
-      DRAW.save();
-        DRAW.translate(CENTERSCREEN.x,CENTERSCREEN.y);
-        DRAW.rotate(ply.rt*(1-CENTERSCREEN.screen_centering));
-        DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
-        ply.hull.drawing();
-      DRAW.restore();
-    
-      DRAW.save();
-        DRAW.translate(CENTERSCREEN.x,CENTERSCREEN.y);
-        DRAW.rotate(-ply.rt*CENTERSCREEN.screen_centering);
-        DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
-        DRAW.lineWidth = 3;
-        line(CENTERSCREEN.x,CENTERSCREEN.y,
-          CENTERSCREEN.x,CENTERSCREEN.y-ply.turret.shaftlength);
-      DRAW.restore();
-    
-    
+      ply.drawing();
     DRAW.restore();
-    
     drawStatsSubFunction();
 };
 
