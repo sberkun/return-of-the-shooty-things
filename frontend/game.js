@@ -3,7 +3,7 @@ var CENTERSCREEN = {statswidth:200,x:myCanvas.width/2,y:3*myCanvas.height/4,zoom
 
 var objects = [];
 var bullets = [];
-var people = [];
+var peoples = [];
 
 var RO = function(x,y,w,h){
     this.x = x;
@@ -60,36 +60,43 @@ createOBsArena();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var ply = {
-    vx:0,vy:0,friction:0.9,getFriction:Math.random(),
+    vx:0,vy:0,friction:0.9,getFriction:0.99,
     x:0,y:0,rc:0,rt:0,speed:0.4,
     d:60, //diameter
 
+    drawing:function(){
+        DRAW.fillStyle = "rgb(200,200,255)";
+        circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
+        DRAW.beginPath();
+        DRAW.moveTo(CENTERSCREEN.x,CENTERSCREEN.y-30);
+        DRAW.lineTo(CENTERSCREEN.x-15,CENTERSCREEN.y+20);
+        DRAW.lineTo(CENTERSCREEN.x+15,CENTERSCREEN.y+20);
+        DRAW.closePath();
+        DRAW.fillStyle = "rgb(255,0,255)";
+        DRAW.fill();
+        DRAW.stroke();
+        DRAW.fillStyle = "rgb(255,255,255)";
+    },
     hull:{
-      drawing:function(){
-          DRAW.fillStyle = "rgb(200,200,255)";
-          circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
-          DRAW.beginPath();
-          DRAW.moveTo(CENTERSCREEN.x,CENTERSCREEN.y-30);
-          DRAW.lineTo(CENTERSCREEN.x-15,CENTERSCREEN.y+20);
-          DRAW.lineTo(CENTERSCREEN.x+15,CENTERSCREEN.y+20);
-          DRAW.closePath();
-          DRAW.fillStyle = "rgb(255,0,255)";
-          DRAW.fill();
-          DRAW.stroke();
-          DRAW.fillStyle = "rgb(255,255,255)";
-      },
       st: 50000,
       t:  50000,
       regen: 200
     },
-    turret:{
+    turret1:{
         numshots:5,
         accuracy:0.6,
         shaftlength:30,
         reloadtime:0,
         bulletspeed:6
-    }
+    },
+    turret2:{
+        //add stuff later, defence weapon............................................................ 
+    },
 };
+ply.turret1.fire = function(){
+};
+ply.turret2.fire = function(){
+}
 ply.die = function(){
   document.body.innerHTML = "ur bad kid";
 };
@@ -100,41 +107,38 @@ ply.updateCanDieYet = function(){
   var turnnn = Math.PI/180;
   var friccc = 1-0.6*(ply.getFriction-ply.friction)/(1-ply.friction);
   
-  if(mouse_control&&!turret_control){
-    ////////////////////////////////////////////////////////////////////////////////
+
+
+  if(cuc){
+      ply.vx-=ply.speed*Math.sin(ply.rc)*friccc;
+      ply.vy-=ply.speed*Math.cos(ply.rc)*friccc;
   }
-  else{
-      if(www||cuc){
-          ply.vx-=ply.speed*Math.sin(ply.rc)*friccc;
-          ply.vy-=ply.speed*Math.cos(ply.rc)*friccc;
-      }
-      if(sss||cdc){
-          ply.vx+=ply.speed*Math.sin(ply.rc)*friccc;
-          ply.vy+=ply.speed*Math.cos(ply.rc)*friccc;
-      }
-      if(aaa||clc) ply.rc+=turnnn;
-      if(ddd||crc) ply.rc-=turnnn;
+  if(cdc){
+      ply.vx+=ply.speed*Math.sin(ply.rc)*friccc;
+      ply.vy+=ply.speed*Math.cos(ply.rc)*friccc;
   }
-  if(mouse_control&&turret_control){
-      if(CENTERSCREEN.screen_centering===0){
-          if(mouseX>CENTERSCREEN.x) ply.rt-=turnnn*Math.min(1,(mouseX-CENTERSCREEN.x)/50);
-          else                      ply.rt+=turnnn*Math.min(1,(CENTERSCREEN.x-mouseX)/50);
-      }
-      if(CENTERSCREEN.screen_centering===1){
-          var themouseangle = 
-            Math.atan((mouseX-CENTERSCREEN.x)/(mouseY-CENTERSCREEN.y-75))
-            +(mouseY>=CENTERSCREEN.y+75?Math.PI:0);
-          if(true) ply.rt+=turnnn;/////////////////////////////////////////////////////////////////
-      }
+  if(clc){ 
+      ply.vy-=ply.speed*Math.sin(ply.rc)*friccc;       //will this work maybe switch..................................
+      ply.vx-=ply.speed*Math.cos(ply.rc)*friccc;
   }
-  else{
-      if(zzz||cmc) ply.rt+=turnnn;
-      if(xxx||cpc) ply.rt-=turnnn;
+  if(crc){ 
+      ply.vy-=ply.speed*Math.sin(ply.rc)*friccc;
+      ply.vx-=ply.speed*Math.cos(ply.rc)*friccc;
+  }
+  if(www){
+      ply.turret1.fire();
+  }
+  if(sss){
+      ply.turret2.fire();
+  }
+  if(aaa){
+    ply.rc+=turnnn;
+  }
+  if(ddd){
+    ply.rc-=turnnn;
   }
   
-  if(csc) ply.getFriction = 0.99;
-    else  ply.getFriction =ply.friction;
-    
+  /*
   if(fireready){if(fireon){
       for(var a=ply.turret.numshots;a>0;a--){
         bullets.push(new bullet(
@@ -151,7 +155,7 @@ ply.updateCanDieYet = function(){
   }}
   else if(firetime++>ply.turret.reloadtime){fireready = true;firetime=0;}
   
-  
+  */
   
   ply.x+=ply.vx;
   ply.y+=ply.vy;
@@ -196,7 +200,7 @@ var drawActionSubFunction = function(rrr){
     
     for(var a in objects){objects[a].drawing();}
     for(var b in bullets){bullets[b].drawing();}
-    for(var c in NPCs){NPCs[c].drawing();}
+    for(var c in peoples){peoples[c].drawing();}
   DRAW.restore();
   
 };
