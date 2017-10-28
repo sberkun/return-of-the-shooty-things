@@ -305,7 +305,6 @@ document.addEventListener('mousemove',function(mouseE){
 var UPDATEALL = function() {
 
     ply.updateCanDieYet();
-    bulletCollisionPruning();
     
     for(var b in bullets){
         if(bullets[b].updateCanDieYet()){
