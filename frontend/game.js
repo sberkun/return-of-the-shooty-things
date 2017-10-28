@@ -215,7 +215,7 @@ var drawStatsSubFunction = function(){
 
 var drawScene = function(){
     DRAW.save();
-      drawActionSubFunction(ply.rc+ply.rt*(1-CENTERSCREEN.screen_centering));
+      drawActionSubFunction(ply.rt);
       ply.drawing();
     DRAW.restore();
     drawStatsSubFunction();
