@@ -78,7 +78,7 @@ var ply = {
         DRAW.fillStyle = "rgb(255,255,255)";
         DRAW.lineWidth = 3;
         line(CENTERSCREEN.x,CENTERSCREEN.y,
-             CENTERSCREEN.x,CENTERSCREEN.y-ply.turret.shaftlength);
+             CENTERSCREEN.x,CENTERSCREEN.y-ply.turret1.shaftlength);
     },
     hull:{
       st: 50000,
@@ -99,12 +99,12 @@ var ply = {
 };
 ply.turret1.fire = function(fff){
     if(fireready){if(fff){
-      for(var a=ply.turret.numshots;a>0;a--){
+      for(var a=ply.turret1.numshots;a>0;a--){
         bullets.push(new bullet(
-            ply.x-ply.turret.shaftlength*(Math.sin(ply.rt)),
-            ply.y-ply.turret.shaftlength*(Math.cos(ply.rt)),
-            ply.turret.bulletspeed,
-            (((ply.rt+(Math.random()-0.5)*ply.turret.accuracy)
+            ply.x-ply.turret1.shaftlength*(Math.sin(ply.rt)),
+            ply.y-ply.turret1.shaftlength*(Math.cos(ply.rt)),
+            ply.turret1.bulletspeed,
+            (((ply.rt+(Math.random()-0.5)*ply.turret1.accuracy)
               %(2*Math.PI))+(2*Math.PI))%(2*Math.PI),
             100,50,"ply"
         ));
@@ -112,7 +112,7 @@ ply.turret1.fire = function(fff){
       }
       fireready = false;
   }}
-  else if(firetime++>ply.turret.reloadtime){fireready = true;firetime=0;}
+  else if(firetime++>ply.turret1.reloadtime){fireready = true;firetime=0;}
 };
 ply.turret2.fire = function(fff){
 }
@@ -135,12 +135,12 @@ ply.updateCanDieYet = function(){
       ply.vy+=ply.speed*Math.cos(ply.rt)*friccc;
   }
   if(clc){ 
-      ply.vy-=ply.speed*Math.sin(ply.rt)*friccc;       //will this work maybe switch..................................
+      ply.vy+=ply.speed*Math.sin(ply.rt)*friccc;       //will this work maybe switch..................................
       ply.vx-=ply.speed*Math.cos(ply.rt)*friccc;
   }
   if(crc){ 
       ply.vy-=ply.speed*Math.sin(ply.rt)*friccc;
-      ply.vx-=ply.speed*Math.cos(ply.rt)*friccc;
+      ply.vx+=ply.speed*Math.cos(ply.rt)*friccc;
   }
   if(true){
     ply.turret1.fire(www);
