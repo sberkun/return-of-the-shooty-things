@@ -311,25 +311,7 @@ var UPDATEALL = function() {
             bullets.splice(b,1);
         }
     }
-    for(var c in NPCs){
-        if(NPCs[c].updateCanDieYet()){
-            NPCs.splice(c,1);
-        }
-    }
-    if(NPCs.length<6+parseInt(document.getElementById("score").innerHTML)*0.001){
-        var ss = Math.random()*25+8;
-        
-        var newNPC = new NPC(Math.random()*1000-500,Math.random()*1000-500,24.0/ss,ss*200,ss*2);
-        while(newNPC.collideOB()){
-          newNPC = new NPC(Math.random()*1000-500,Math.random()*1000-500,24.0/ss,ss*200,ss*2);
-        }
-        
-        NPCs.push(newNPC);
-    }
-    
-    
-    if(brl){if(CENTERSCREEN.screen_centering>0)CENTERSCREEN.screen_centering-=0.01;}
-    if(brr){if(CENTERSCREEN.screen_centering<1)CENTERSCREEN.screen_centering+=0.01;}
+
     drawScene();
 };
 
