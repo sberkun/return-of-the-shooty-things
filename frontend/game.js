@@ -202,10 +202,8 @@ var drawStatsSubFunction = function(){
 };
 
 var drawScene = function(){
-    DRAW.save();
-      drawActionSubFunction(ply.rt);
-      ply.drawing();
-    DRAW.restore();
+    drawActionSubFunction(ply.rt);
+    ply.drawing();
     drawStatsSubFunction();
 };
 
