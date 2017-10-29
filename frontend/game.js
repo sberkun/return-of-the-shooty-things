@@ -83,7 +83,7 @@ var ply = {
 };
 ply.drawingIMG.src = "ppl.png";
 ply.drawing = function(){
-  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-ply.d,CENTERSCREEN.y-ply.d,ply.d,ply.d)
+  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-ply.d,CENTERSCREEN.y-ply.d,ply.d*2,ply.d*2);
 };
 ply.turret1.fire = function(fff){
     if(fireready){if(fff){
@@ -94,7 +94,7 @@ ply.turret1.fire = function(fff){
             ply.turret1.bulletspeed,
             (((ply.rt+(Math.random()-0.5)*ply.turret1.accuracy)
               %(2*Math.PI))+(2*Math.PI))%(2*Math.PI),
-            100,50,"ply"
+            100,10,"ply"
         ));
         ply.hull.t--;
       }
