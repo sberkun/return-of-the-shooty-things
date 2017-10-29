@@ -162,8 +162,8 @@ var drawActionSubFunction = function(rrr){
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
     
     var sp = 100;
-    for(var ax = -ply.x%sp,bx = myCanvas.width;ax<=bx;ax+=sp){
-      for(var ay = -ply.y%sp,by = myCanvas.height;ay<=by;ay+=sp){
+    for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
+      for(var ay = -myCanvas.width-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
         rect(ax-1,ay-1,2,2);
     }}
     
