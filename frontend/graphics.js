@@ -1,0 +1,62 @@
+
+
+var drawActionSubFunction = function(rrr){
+  rect(-10,-10,myCanvas.width+20,myCanvas.width+20);
+  
+  if(CENTERSCREEN.zoom){
+      DRAW.scale(0.5,0.5);
+      DRAW.translate((myCanvas.width+200)*0.5,myCanvas.height*0.5);
+  }
+  
+  DRAW.save();
+    DRAW.translate(CENTERSCREEN.x,CENTERSCREEN.y);
+    DRAW.rotate(rrr);
+    DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
+    
+    var sp = 100;
+    for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
+      for(var ay = -myCanvas.width-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
+        rect(ax-1,ay-1,2,2);
+    }}
+    
+    for(var a in objects){objects[a].drawing();}
+    for(var b in bullets){bullets[b].drawing();}
+    for(var c in peoples){peoples[c].drawing();}
+  DRAW.restore();
+  
+};
+var drawStatsSubFunction = function(){
+  
+  DRAW.save();
+  
+    DRAW.lineWidth = 1;
+    rect(-10,-10,CENTERSCREEN.statswidth+10,myCanvas.height+20);
+  
+    rect(10,50,CENTERSCREEN.statswidth-20,20);
+    DRAW.fillStyle = "rgb(100,100,255)";
+    rect(10,50,
+      Math.max((CENTERSCREEN.statswidth-20)*(ply.hull.t/ply.hull.st),0)
+      ,20);
+    DRAW.fillText("controls:",20,100);
+    if(!mouse_control){
+      DRAW.fillText("w is shoot",20,120);
+      DRAW.fillText("ad is turn",20,140);
+      DRAW.fillText("arrow keys are move",20,160);
+      DRAW.fillText("click HERE to switch the controls",20,180);
+    }else{
+      DRAW.fillText("up arrow is shoot",20,120);
+      DRAW.fillText("left/right arrows are turn",20,140);
+      DRAW.fillText("wasd keys are move",20,160);
+      DRAW.fillText("click HERE to switch the controls",20,180);      
+    }
+  
+  
+  DRAW.restore();
+  
+};
+
+var drawScene = function(){
+    drawActionSubFunction(ply.rt);
+    ply.drawing();
+    drawStatsSubFunction();
+};
