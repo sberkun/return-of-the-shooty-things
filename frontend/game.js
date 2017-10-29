@@ -73,7 +73,7 @@ var ply = {
     turret1:{
         numshots:5,
         accuracy:0.6,
-        shaftlength:30,
+        shaftlength:64,
         reloadtime:0,
         bulletspeed:6
     },
@@ -306,4 +306,3 @@ var UPDATEALL = function() {
 
 window.setTimeout(function(){window.setInterval(UPDATEALL,15);}, 500);
 
-alert("game set up all good");
