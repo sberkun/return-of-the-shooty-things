@@ -63,7 +63,8 @@ var ply = {
     vx:0,vy:0,friction:0.9,getFriction:0.9,
     x:0,y:0,rt:0,speed:0.4,
     d:60, //diameter
-
+    drawingIMG:new Image(),
+    /*
     drawing:function(){
         DRAW.fillStyle = "rgb(200,200,255)";
         circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
@@ -79,7 +80,7 @@ var ply = {
         DRAW.lineWidth = 3;
         line(CENTERSCREEN.x,CENTERSCREEN.y,
              CENTERSCREEN.x,CENTERSCREEN.y-ply.turret1.shaftlength);
-    },
+    },*/
     hull:{
       st: 50000,
       t:  50000,
@@ -96,6 +97,10 @@ var ply = {
     turret2:{
         //add stuff later, defence weapon............................................................ 
     },
+};
+ply.drawingIMG.src = "ppl.png";
+ply.drawing = function(){
+  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-16,CENTERSCREEN.y-16,32,32)
 };
 ply.turret1.fire = function(fff){
     if(fireready){if(fff){
