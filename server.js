@@ -19,7 +19,7 @@ const testaaa = require('./backend/game.js').exportFunction();
 
 
 wss.on('connection', (ws) => {
-  peoples[ws.id] = new require(./backend/newply.js).exportFunction();
+  //peoples[ws.id] = new require(./backend/constructors.js).exportFunction();
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
   ws.send(""+testaaa);
