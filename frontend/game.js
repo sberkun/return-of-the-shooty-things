@@ -113,36 +113,25 @@ ply.updateCanDieYet = function(){
   
   var friccc = 1; //later, environmental friction
   
-
-  if(cuc){
-      ply.vx-=ply.speed*Math.sin(ply.rt)*friccc;
-      ply.vy-=ply.speed*Math.cos(ply.rt)*friccc;
+  if(mouse_control){
+    if(www){ply.vx-=ply.speed*Math.sin(ply.rt)*friccc;ply.vy-=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(sss){ply.vx+=ply.speed*Math.sin(ply.rt)*friccc;ply.vy+=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(aaa){ply.vy+=ply.speed*Math.sin(ply.rt)*friccc;ply.vx-=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(ddd){ply.vy-=ply.speed*Math.sin(ply.rt)*friccc;ply.vx+=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(true){ply.turret1.fire(cuc);}
+    if(true){ply.turret2.fire(cdc);}
+    if(clc){ply.rt+=ply.hull.turnnn;}
+    if(crc){ply.rt-=ply.hull.turnnn;}
+  }else{
+    if(cuc){ply.vx-=ply.speed*Math.sin(ply.rt)*friccc;ply.vy-=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(cdc){ply.vx+=ply.speed*Math.sin(ply.rt)*friccc;ply.vy+=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(clc){ply.vy+=ply.speed*Math.sin(ply.rt)*friccc;ply.vx-=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(crc){ply.vy-=ply.speed*Math.sin(ply.rt)*friccc;ply.vx+=ply.speed*Math.cos(ply.rt)*friccc;}
+    if(true){ply.turret1.fire(www);}
+    if(true){ply.turret2.fire(sss);}
+    if(aaa){ply.rt+=ply.hull.turnnn;}
+    if(ddd){ply.rt-=ply.hull.turnnn;}
   }
-  if(cdc){
-      ply.vx+=ply.speed*Math.sin(ply.rt)*friccc;
-      ply.vy+=ply.speed*Math.cos(ply.rt)*friccc;
-  }
-  if(clc){ 
-      ply.vy+=ply.speed*Math.sin(ply.rt)*friccc;       //will this work maybe switch..................................
-      ply.vx-=ply.speed*Math.cos(ply.rt)*friccc;
-  }
-  if(crc){ 
-      ply.vy-=ply.speed*Math.sin(ply.rt)*friccc;
-      ply.vx+=ply.speed*Math.cos(ply.rt)*friccc;
-  }
-  if(true){
-    ply.turret1.fire(www);
-  }
-  if(true){
-      ply.turret2.fire(sss);
-  }
-  if(aaa){
-    ply.rt+=ply.hull.turnnn;
-  }
-  if(ddd){
-    ply.rt-=ply.hull.turnnn;
-  }
-  
   
   ply.x+=ply.vx;
   ply.y+=ply.vy;
