@@ -74,7 +74,7 @@ ply.updateCanDieYet = function(){
     if(ddd){ply.rt-=ply.hull.turnnn;}
   }
   
-  ccc(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed);//*********************************************************************
+  if(sss)ccc(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed);//***********************************************************
   if(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
   ply.vx+=tttvx;
   ply.vy+=tttvy;
