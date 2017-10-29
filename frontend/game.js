@@ -62,25 +62,8 @@ createOBsArena();
 var ply = {
     vx:0,vy:0,friction:0.9,getFriction:0.9,
     x:0,y:0,rt:0,speed:0.4,
-    d:60, //diameter
+    d:64, //diameter
     drawingIMG:new Image(),
-    /*
-    drawing:function(){
-        DRAW.fillStyle = "rgb(200,200,255)";
-        circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
-        DRAW.beginPath();
-        DRAW.moveTo(CENTERSCREEN.x,CENTERSCREEN.y-30);
-        DRAW.lineTo(CENTERSCREEN.x-15,CENTERSCREEN.y+20);
-        DRAW.lineTo(CENTERSCREEN.x+15,CENTERSCREEN.y+20);
-        DRAW.closePath();
-        DRAW.fillStyle = "rgb(255,0,255)";
-        DRAW.fill();
-        DRAW.stroke();
-        DRAW.fillStyle = "rgb(255,255,255)";
-        DRAW.lineWidth = 3;
-        line(CENTERSCREEN.x,CENTERSCREEN.y,
-             CENTERSCREEN.x,CENTERSCREEN.y-ply.turret1.shaftlength);
-    },*/
     hull:{
       st: 50000,
       t:  50000,
@@ -100,7 +83,7 @@ var ply = {
 };
 ply.drawingIMG.src = "ppl.png";
 ply.drawing = function(){
-  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-16,CENTERSCREEN.y-16,32,32)
+  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-ply.d*1.14,CENTERSCREEN.y-ply.d*1.14,ply.d,ply.d)
 };
 ply.turret1.fire = function(fff){
     if(fireready){if(fff){
