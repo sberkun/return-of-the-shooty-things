@@ -22,6 +22,6 @@ wss.on('connection', (ws) => {
   //peoples[ws.id] = new require(./backend/constructors.js).exportFunction();
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
-  ws.send(""+testaaa);
+  //ws.send(""+testaaa);
 });
 
