@@ -18,7 +18,7 @@ const users = [];
 
 
 
-var testaaa = require('backend/game.js').exportFunction();
+var testaaa = require('./backend/game.js').exportFunction();
 wss.on('connection', (ws) => {
   users[ws.id] = {name:"anonymous"};
   ws.on('message',(message) => {});
