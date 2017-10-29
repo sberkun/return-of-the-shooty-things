@@ -81,9 +81,9 @@ var ply = {
         //add stuff later, defence weapon............................................................ 
     },
 };
-ply.drawingIMG.src = "ppl.png";
+ply.drawingIMG.src = "ppl2.png";
 ply.drawing = function(){
-  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-ply.d,CENTERSCREEN.y-ply.d,ply.d*2,ply.d*2);
+  DRAW.drawImage(ply.drawingIMG,0,0,128,128,CENTERSCREEN.x-64,CENTERSCREEN.y-64,128,128);
 };
 ply.turret1.fire = function(fff){
     if(fireready){if(fff){
