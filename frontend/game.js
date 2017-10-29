@@ -196,6 +196,19 @@ var drawStatsSubFunction = function(){
     rect(10,50,
       Math.max((CENTERSCREEN.statswidth-20)*(ply.hull.t/ply.hull.st),0)
       ,20);
+    DRAW.fillText("controls:",20,100);
+    if(!mouse_control){
+      DRAW.fillText("w is shoot",20,120);
+      DRAW.fillText("ad is turn",20,140);
+      DRAW.fillText("arrow keys are move",20,160);
+      DRAW.fillText("click HERE to switch the controls",20,180);
+    }else{
+      DRAW.fillText("up arrow is shoot",20,120);
+      DRAW.fillText("left/right arrows are turn",20,140);
+      DRAW.fillText("wasd keys are move",20,160);
+      DRAW.fillText("click HERE to switch the controls",20,180);      
+    }
+  
   
   DRAW.restore();
   
