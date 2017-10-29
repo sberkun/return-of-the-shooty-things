@@ -83,7 +83,7 @@ var ply = {
 };
 ply.drawingIMG.src = "ppl.png";
 ply.drawing = function(){
-  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-ply.d*1.14,CENTERSCREEN.y-ply.d*1.14,ply.d,ply.d)
+  DRAW.drawImage(ply.drawingIMG,0,0,32,32,CENTERSCREEN.x-ply.d,CENTERSCREEN.y-ply.d,ply.d,ply.d)
 };
 ply.turret1.fire = function(fff){
     if(fireready){if(fff){
