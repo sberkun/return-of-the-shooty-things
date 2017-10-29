@@ -13,22 +13,15 @@ const server = express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const wss = new SocketServer({ server });
-const users = [];
+const peoples = [];
+const testaaa = require('./backend/game.js').exportFunction();
 
 
 
-
-var testaaa = require('./backend/game.js').exportFunction();
 wss.on('connection', (ws) => {
-  users[ws.id] = {name:"anonymous"};
+  peoples[ws.id] = new require(./backend/newply.js).exportFunction();
   ws.on('message',(message) => {});
-  ws.on('close', ()=>users.splice(ws.id,1) );
+  ws.on('close', ()=>peoples.splice(ws.id,1) );
   ws.send(""+testaaa);
 });
-/*
-setInterval(() => {
-  wss.clients.forEach((client) => {
-    client.send('02:'+new Date().toTimeString());
-  });
-}, 1000);
-*/
+
