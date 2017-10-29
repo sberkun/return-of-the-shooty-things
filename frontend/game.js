@@ -213,8 +213,8 @@ var drawScene = function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-var mouse_control = false;
-var turret_control = true;
+var mouse_control = true;
+var turret_control = false;
 var mouseX = 0;
 var mouseY = 0;
 var www = false;
