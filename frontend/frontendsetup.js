@@ -42,6 +42,9 @@
     line(100,50,200,50);
     line(200,50,200,200);
     line(25,375,375,25);
+    DRAW.fillStyle = "rgb(255,255,255)";
+    DRAW.strokeStyle = "rgb(0,0,0)";
+    DRAW.lineWidth = 1;
   }
   loadingScreen();
 
