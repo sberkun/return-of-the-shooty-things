@@ -20,8 +20,7 @@ var RO = function(x,y,w,h){
         DRAW.lineWidth = 1;
     };
 };
-var bullet = function(x,y,s,r,t,d,owner){
-    this.owner = owner;
+var bullet = function(x,y,s,r,t,d){
     this.x = x;
     this.y = y;
     this.s = s;//speed
