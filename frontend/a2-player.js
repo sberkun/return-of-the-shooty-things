@@ -1,6 +1,6 @@
 var ply = {
     vx:0,vy:0,friction:0.9,getFriction:0.9,
-    x:0,y:0,vr:0,rt:0,speed:0.4,rspeed:0.01,
+    x:0,y:0,vr:0,rt:0,speed:0.4,rspeed:0.005,
     d:64, //diameter
     drawingIMG:new Image(),
     hull:{
@@ -87,5 +87,5 @@ ply.updateCanDieYet = function(){
   ply.vr = ply.vr*ply.getFriction;
   if(Math.abs(ply.vx)<0.005) ply.vx = 0;
   if(Math.abs(ply.vy)<0.005) ply.vy = 0;
-  if(Math.abs(ply.vr)<0.005) ply.vr = 0;
+  if(Math.abs(ply.vr)<0.0005) ply.vr = 0;
 };
