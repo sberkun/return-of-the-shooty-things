@@ -1,14 +1,15 @@
 
 
 var drawActionSubFunction = function(rrr){
-  rect(-10,-10,myCanvas.width+20,myCanvas.width+20);
-  
-  if(CENTERSCREEN.zoom){
-      DRAW.scale(0.5,0.5);
-      DRAW.translate((myCanvas.width+200)*0.5,myCanvas.height*0.5);
-  }
-  
   DRAW.save();
+    rect(-10,-10,myCanvas.width+20,myCanvas.width+20);
+  
+    if(CENTERSCREEN.zoom){
+        DRAW.scale(0.5,0.5);
+        DRAW.translate((myCanvas.width+200)*0.5,myCanvas.height*0.5);
+    }
+  
+
     DRAW.translate(CENTERSCREEN.x,CENTERSCREEN.y);
     DRAW.rotate(rrr);
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
