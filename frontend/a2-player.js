@@ -1,6 +1,6 @@
 var ply = {
     vx:0,vy:0,friction:0.9,getFriction:0.9,
-    x:0,y:0,vr:0,rt:0,speed:0.4,rspeed:0.002,
+    x:0,y:0,rt:0,speed:0.4,rspeed:Math.PI/180,
     d:64, //diameter
     drawingIMG:new Image(),
     hull:{
@@ -60,8 +60,8 @@ ply.updateCanDieYet = function(){
     if(ddd){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);}
     if(true){ply.turret1.fire(cuc);}
     if(true){ply.turret2.fire(cdc);}
-    if(clc){ply.vr+=ply.rspeed;}
-    if(crc){ply.vr-=ply.rspeed;}
+    if(clc){ply.rt+=ply.rspeed;}
+    if(crc){ply.rt-=ply.rspeed;}
   }else{
     if(cuc){tttvx-=ply.speed*Math.sin(ply.rt);tttvy-=ply.speed*Math.cos(ply.rt);}
     if(cdc){tttvx+=ply.speed*Math.sin(ply.rt);tttvy+=ply.speed*Math.cos(ply.rt);}
@@ -69,8 +69,8 @@ ply.updateCanDieYet = function(){
     if(crc){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);}
     if(true){ply.turret1.fire(www);}
     if(true){ply.turret2.fire(sss);}
-    if(aaa){ply.vr+=ply.rspeed;}
-    if(ddd){ply.vr-=ply.rspeed;}
+    if(aaa){ply.rt+=ply.rspeed;}
+    if(ddd){ply.rt-=ply.rspeed;}
   }
   
 
@@ -79,13 +79,10 @@ ply.updateCanDieYet = function(){
   ply.vy+=tttvy;
   ply.x+=ply.vx;
   ply.y+=ply.vy;
-  ply.rt+=ply.vr;
   
 
   ply.vx = ply.vx*ply.getFriction;
   ply.vy = ply.vy*ply.getFriction;
-  ply.vr = ply.vr*ply.getFriction;
   if(Math.abs(ply.vx)<0.005) ply.vx = 0;
   if(Math.abs(ply.vy)<0.005) ply.vy = 0;
-  if(Math.abs(ply.vr)<0.0005) ply.vr = 0;
 };
