@@ -1,6 +1,6 @@
 var ply = {
     vx:0,vy:0,friction:0.9,getFriction:0.9,
-    x:0,y:0,vr:0,rt:0,speed:0.4,rspeed:Math.PI/180,
+    x:0,y:0,vr:0,rt:0,speed:0.4,rspeed:0.01,
     d:64, //diameter
     drawingIMG:new Image(),
     hull:{
