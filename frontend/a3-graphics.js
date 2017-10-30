@@ -51,13 +51,7 @@ var drawStatsSubFunction = function(){
 };
 
 var drawScene = function(){
-    DRAW.save();
-      if(CENTERSCREEN.zoom){
-        DRAW.scale(0.5,0.5);
-        DRAW.translate((myCanvas.width+200)*0.5,myCanvas.height*0.5);
-      }
-      drawActionSubFunction(ply.rt);
-      ply.drawing();
-    DRAW.restore();
+    drawActionSubFunction(ply.rt);
+    ply.drawing();
     drawStatsSubFunction();
 };
