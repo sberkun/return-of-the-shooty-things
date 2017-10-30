@@ -4,6 +4,7 @@ module.exports.exportFunction = function(inputPeoples){
     bullets:[],
     objects:[],
   };
+  /*
   returnOBJ.ply=function(){
   };
   returnOBJ.RO=function(x,y,w,h){
@@ -54,5 +55,6 @@ module.exports.exportFunction = function(inputPeoples){
       
   };
   returnOBJ.createOBsArena();
+  */
   return returnOBJ;
 };
