@@ -4,12 +4,6 @@ var drawActionSubFunction = function(rrr){
   DRAW.save();
     rect(-10,-10,myCanvas.width+20,myCanvas.width+20);
   
-    if(CENTERSCREEN.zoom){
-        DRAW.scale(0.5,0.5);
-        DRAW.translate((myCanvas.width+200)*0.5,myCanvas.height*0.5);
-    }
-  
-
     DRAW.translate(CENTERSCREEN.x,CENTERSCREEN.y);
     DRAW.rotate(rrr);
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
@@ -57,7 +51,13 @@ var drawStatsSubFunction = function(){
 };
 
 var drawScene = function(){
-    drawActionSubFunction(ply.rt);
-    ply.drawing();
+    DRAW.save();
+      if(CENTERSCREEN.zoom){
+        DRAW.scale(0.5,0.5);
+        DRAW.translate((myCanvas.width+200)*0.5,myCanvas.height*0.5);
+      }
+      drawActionSubFunction(ply.rt);
+      ply.drawing();
+    DRAW.restore();
     drawStatsSubFunction();
 };
