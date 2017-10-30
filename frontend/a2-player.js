@@ -34,7 +34,7 @@ ply.turret1.fire = function(fff){
             ply.turret1.bulletspeed,
             (((ply.rt+(Math.random()-0.5)*ply.turret1.accuracy)
               %(2*Math.PI))+(2*Math.PI))%(2*Math.PI),
-            100,10,"ply"
+            100,10
         ));
         ply.hull.t--;
       }
