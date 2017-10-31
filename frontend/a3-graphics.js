@@ -2,7 +2,7 @@
 
 var drawActionSubFunction = function(rrr){
   DRAW.save();
-    rect(-10,-10,myCanvas.width+20,myCanvas.width+20);
+    DRAW.clearRect(0,0,myCanvas.width,myCanvas.height);
   
     DRAW.translate(CENTERSCREEN.x,CENTERSCREEN.y);
     DRAW.rotate(rrr);
