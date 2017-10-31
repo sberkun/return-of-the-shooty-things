@@ -8,9 +8,9 @@ var UPDATEALL = function() {
             bullets.splice(b,1);
         }
     }
-
-    drawScene();
+    
 };
 
 
 window.setTimeout(function(){window.setInterval(UPDATEALL,15);}, 500);
+window.setTimeout(function(){window.setInterval(drawScene,50);}, 500);
