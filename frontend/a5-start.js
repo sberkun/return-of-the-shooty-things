@@ -13,4 +13,4 @@ var UPDATEALL = function() {
 
 
 window.setTimeout(function(){window.setInterval(UPDATEALL,15);}, 500);
-window.setTimeout(function(){window.setInterval(drawScene,50);}, 500);
+window.setTimeout(function(){window.setInterval(drawScene,30);}, 500);
