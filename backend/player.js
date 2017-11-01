@@ -34,6 +34,7 @@ module.exports.exportFunction = function(){
       this.turret2={
           //add stuff later, defence weapon............................................................ 
       };
+      /*
       this.turret1.fire = function(fff153vvb){
           if(ply.controls.fireready){if(fff153vvb){
             for(var a=ply.turret1.numshots;a>0;a--){
@@ -93,5 +94,5 @@ module.exports.exportFunction = function(){
           if(Math.abs(this.vx)<0.005) this.vx = 0;
           if(Math.abs(this.vy)<0.005) this.vy = 0;
       };
-      
+      */
 };
