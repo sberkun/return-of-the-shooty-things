@@ -23,5 +23,6 @@ wss.on('connection', (ws) => {
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
   ws.send(""+testaaa.peoples.length);
+  ws.send(""+peoples.length);
 });
 
