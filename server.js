@@ -14,15 +14,13 @@ const server = express()
 
 const wss = new SocketServer({ server });
 const peoples = [];
-  peoples['cheesycheese'] = 7;//********************************************************************************
 const testaaa = require('./backend/game.js').exportFunction(peoples);
-//const awseoijh = require(./backend/player.js).exportFunction();//*********************************************
+const awseoijh = require(./backend/player.js).exportFunction();
 
 wss.on('connection', (ws) => {
   peoples[ws.id] = 7;//require(./backend/player.js).exportFunction();
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
-  ws.send(""+testaaa.peoples['cheesycheese']);
-  ws.send(""+peoples['cheesycheese']);
+  //ws.send("hi");
 });
 
