@@ -13,12 +13,12 @@ module.exports.exportFunction = function(){
         fireready: true,
         firetime: 0,
       };
-      /*
       this.vx=0;this.vy=0;
       this.friction=0.9;this.getFriction:0.9;
-      this.x=0,this.y=0;
+      this.x=0;this.y=0;
       this.rt=0;this.speed=0.4;this.rspeed=Math.PI/180;
       this.d=64; //diameter
+      
       this.hull={
         st: 50000,
         t:  50000,
@@ -34,6 +34,7 @@ module.exports.exportFunction = function(){
       this.turret2={
           //add stuff later, defence weapon............................................................ 
       };
+      /*
       this.turret1.fire = function(fff){
           if(ply.controls.fireready){if(fff){
             for(var a=ply.turret1.numshots;a>0;a--){
