@@ -5,6 +5,7 @@ module.exports.exportFunction = function(inputPeoples){
       objects:[],
   };
   OBJ.ply=function(){
+      var ply = this;
       this.controls = {
         mouse_control: true,
         turret_control: false,
@@ -38,7 +39,7 @@ module.exports.exportFunction = function(inputPeoples){
           //add stuff later, defence weapon............................................................ 
       };
       this.turret1.fire = function(fff){
-          if(fireready){if(fff){
+          if(ply.controls.fireready){if(fff){
             for(var a=ply.turret1.numshots;a>0;a--){
               bullets.push(new bullet(
                   ply.x-ply.turret1.shaftlength*(Math.sin(ply.rt)),
