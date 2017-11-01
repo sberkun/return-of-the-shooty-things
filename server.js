@@ -15,10 +15,10 @@ const server = express()
 const wss = new SocketServer({ server });
 const peoples = [];
 const testaaa = require('./backend/game.js').exportFunction();
-
+const awseoijh = require(./backend/player.js).exportFunction();//*********************************************
 
 wss.on('connection', (ws) => {
-  peoples[ws.id] = require(./backend/player.js).exportFunction();
+  //peoples[ws.id] = require(./backend/player.js).exportFunction();
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
   //ws.send(""+testaaa);
