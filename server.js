@@ -14,6 +14,7 @@ const server = express()
 
 const wss = new SocketServer({ server });
 const peoples = [];
+  peoples['cheesycheese'] = 7;//********************************************************************************
 const testaaa = require('./backend/game.js').exportFunction(peoples);
 //const awseoijh = require(./backend/player.js).exportFunction();//*********************************************
 
