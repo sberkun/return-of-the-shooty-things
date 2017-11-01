@@ -93,5 +93,5 @@ module.exports.exportFunction = function(){
           if(Math.abs(this.vx)<0.005) this.vx = 0;
           if(Math.abs(this.vy)<0.005) this.vy = 0;
       };
-      */
+      
 };
