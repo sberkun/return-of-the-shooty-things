@@ -22,7 +22,7 @@ wss.on('connection', (ws) => {
   peoples[ws.id] = 7;//require(./backend/player.js).exportFunction();
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
-  ws.send(""+testaaa.peoples.length);
-  ws.send(""+peoples.length);
+  ws.send(""+testaaa.peoples['cheesycheese']);
+  ws.send(""+peoples['cheesycheese']);
 });
 
