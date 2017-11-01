@@ -15,7 +15,7 @@ const server = express()
 const wss = new SocketServer({ server });
 const peoples = [];
 const testaaa = require('./backend/game.js').exportFunction(peoples);
-const awseoijh = require(./backend/player.js).exportFunction();//*********************************************
+//const awseoijh = require(./backend/player.js).exportFunction();//*********************************************
 
 wss.on('connection', (ws) => {
   //peoples[ws.id] = require(./backend/player.js).exportFunction();
