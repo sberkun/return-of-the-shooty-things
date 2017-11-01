@@ -21,6 +21,6 @@ wss.on('connection', (ws) => {
   //peoples[ws.id] = require(./backend/player.js).exportFunction();
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
-  //ws.send(""+testaaa);
+  ws.send(""+testaaa.peoples.length);
 });
 
