@@ -1,4 +1,5 @@
 module.exports.exportFunction = function(){
+      /*
       var ply = this;
       this.controls = {
         mouse_control: true,
@@ -32,7 +33,6 @@ module.exports.exportFunction = function(){
       this.turret2={
           //add stuff later, defence weapon............................................................ 
       };
-      /*
       this.turret1.fire = function(fff){
           if(ply.controls.fireready){if(fff){
             for(var a=ply.turret1.numshots;a>0;a--){
