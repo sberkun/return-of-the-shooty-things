@@ -53,42 +53,42 @@ function player(){
       this.die = function(){
       };
       this.updateCanDieYet = function(){
-          if(this.hull.t<0) return true;
-          if(this.hull.t<this.hull.st) this.hull.t+=this.hull.regen;
+          if(ply.hull.t<0) return true;
+          if(ply.hull.t<ply.hull.st) ply.hull.t+=ply.hull.regen;
   
           var tttvx = 0;
           var tttvy = 0;
     
           if(mouse_control){
-            if(this.controls.www){tttvx-=this.speed*Math.sin(this.rt);tttvy-=this.speed*Math.cos(this.rt);}
-            if(this.controls.sss){tttvx+=this.speed*Math.sin(this.rt);tttvy+=this.speed*Math.cos(this.rt);}
-            if(this.controls.aaa){tttvy+=this.speed*Math.sin(this.rt);tttvx-=this.speed*Math.cos(this.rt);}
-            if(this.controls.ddd){tttvy-=this.speed*Math.sin(this.rt);tttvx+=this.speed*Math.cos(this.rt);}
-            if(true){this.turret1.fire(this.controls.cuc);}
-            if(true){this.turret2.fire(this.controls.cdc);}
-            if(this.controls.clc){this.rt+=this.rspeed;}
-            if(this.controls.crc){this.rt-=this.rspeed;}
+            if(ply.controls.www){tttvx-=ply.speed*Math.sin(ply.rt);tttvy-=ply.speed*Math.cos(ply.rt);}
+            if(ply.controls.sss){tttvx+=ply.speed*Math.sin(ply.rt);tttvy+=ply.speed*Math.cos(ply.rt);}
+            if(ply.controls.aaa){tttvy+=ply.speed*Math.sin(ply.rt);tttvx-=ply.speed*Math.cos(ply.rt);}
+            if(ply.controls.ddd){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);}
+            if(true){ply.turret1.fire(ply.controls.cuc);}
+            if(true){ply.turret2.fire(ply.controls.cdc);}
+            if(ply.controls.clc){ply.rt+=ply.rspeed;}
+            if(ply.controls.crc){ply.rt-=ply.rspeed;}
           }else{
-            if(this.controls.cuc){tttvx-=this.speed*Math.sin(this.rt);tttvy-=this.speed*Math.cos(this.rt);}
-            if(this.controls.cdc){tttvx+=this.speed*Math.sin(this.rt);tttvy+=this.speed*Math.cos(this.rt);}
-            if(this.controls.clc){tttvy+=this.speed*Math.sin(this.rt);tttvx-=this.speed*Math.cos(this.rt);}
-            if(this.controls.crc){tttvy-=this.speed*Math.sin(this.rt);tttvx+=this.speed*Math.cos(this.rt);}
-            if(true){this.turret1.fire(this.controls.www);}
-            if(true){this.turret2.fire(this.controls.sss);}
-            if(this.controls.aaa){this.rt+=this.rspeed;}
-            if(this.controls.ddd){this.rt-=this.rspeed;}
+            if(ply.controls.cuc){tttvx-=ply.speed*Math.sin(ply.rt);tttvy-=ply.speed*Math.cos(ply.rt);}
+            if(ply.controls.cdc){tttvx+=ply.speed*Math.sin(ply.rt);tttvy+=ply.speed*Math.cos(ply.rt);}
+            if(ply.controls.clc){tttvy+=ply.speed*Math.sin(ply.rt);tttvx-=ply.speed*Math.cos(ply.rt);}
+            if(ply.controls.crc){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);}
+            if(true){ply.turret1.fire(ply.controls.www);}
+            if(true){ply.turret2.fire(ply.controls.sss);}
+            if(ply.controls.aaa){ply.rt+=ply.rspeed;}
+            if(ply.controls.ddd){ply.rt-=ply.rspeed;}
           }
   
-          if(tttvx*tttvx+tttvy*tttvy-this.speed*this.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
-          this.vx+=tttvx;
-          this.vy+=tttvy;
-          this.x+=this.vx;
-          this.y+=this.vy;
+          if(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
+          ply.vx+=tttvx;
+          ply.vy+=tttvy;
+          ply.x+=ply.vx;
+          ply.y+=ply.vy;
           
-          this.vx = this.vx*this.getFriction;
-          this.vy = this.vy*this.getFriction;
-          if(Math.abs(this.vx)<0.005) this.vx = 0;
-          if(Math.abs(this.vy)<0.005) this.vy = 0;
+          ply.vx = ply.vx*ply.getFriction;
+          ply.vy = ply.vy*ply.getFriction;
+          if(Math.abs(ply.vx)<0.005) ply.vx = 0;
+          if(Math.abs(ply.vy)<0.005) ply.vy = 0;
       };
 }
 
