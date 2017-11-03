@@ -1,5 +1,5 @@
 module.exports.exportFunction = function(){
-      
+      /*
       var ply = this;
       this.controls = {
         mouse_control: true,
@@ -16,7 +16,7 @@ module.exports.exportFunction = function(){
       this.vx=0;this.vy=0;
       this.friction=0.9;this.getFriction:0.9;
       this.x=0;this.y=0;
-      this.rt=0;this.speed=0.4;this.rspeed=Math.PI/180;
+      this.rt=0;this.speed=0.4;this.rspeed=2*Math.PI/180;
       this.d=64; //diameter
       
       this.hull={
@@ -34,7 +34,6 @@ module.exports.exportFunction = function(){
       this.turret2={
           //add stuff later, defence weapon............................................................ 
       };
-      /*
       this.turret1.fire = function(fff153vvb){
           if(ply.controls.fireready){if(fff153vvb){
             for(var a=ply.turret1.numshots;a>0;a--){
