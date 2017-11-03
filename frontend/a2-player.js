@@ -13,7 +13,7 @@ function player(){
         firetime: 0,
       };
       this.vx=0;this.vy=0;
-      this.friction=0.9;this.getFriction:0.9;
+      this.friction=0.9;this.getFriction=0.9;
       this.x=0;this.y=0;
       this.rt=0;this.speed=0.4;this.rspeed=2*Math.PI/180;
       this.d=64; //diameter
