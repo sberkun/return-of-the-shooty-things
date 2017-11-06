@@ -76,8 +76,8 @@ var updateCanDieYetPlayer = function(theply){
       if(theply.controls.sss){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.aaa){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.ddd){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);}
-      if(true){theply.turret1.fire(theply.controls.cuc);}
-      if(true){theply.turret2.fire(theply.controls.cdc);}
+      if(true){fireTurret1(theply,theply.controls.cuc);}
+      if(true){fireTurret2(theply,theply.controls.cdc);}
       if(theply.controls.clc){theply.rt+=theply.rspeed;}
       if(theply.controls.crc){theply.rt-=theply.rspeed;}
     }else{
@@ -85,8 +85,8 @@ var updateCanDieYetPlayer = function(theply){
       if(theply.controls.cdc){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.clc){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.crc){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);}
-      if(true){theply.turret1.fire(theply.controls.www);}
-      if(true){theply.turret2.fire(theply.controls.sss);}
+      if(true){fireTurret1(theply,theply.controls.www);}
+      if(true){fireTurret2(theply,theply.controls.sss);}
       if(theply.controls.aaa){theply.rt+=theply.rspeed;}
       if(theply.controls.ddd){theply.rt-=theply.rspeed;}
     }
