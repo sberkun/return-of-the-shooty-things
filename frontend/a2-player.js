@@ -1,6 +1,8 @@
 function player(){
       var ply = this;
       this.controls = {
+        mouseX:0,
+        mouseY:0,
         mouse_control: true,
         turret_control: false,
         www:false, aaa:false, sss:false, ddd:false,
