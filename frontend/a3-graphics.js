@@ -34,7 +34,7 @@ var drawStatsSubFunction = function(){
       Math.max((CENTERSCREEN.statswidth-20)*(ply.hull.t/ply.hull.st),0)
       ,20);
     DRAW.fillText("controls:",20,100);
-    if(!mouse_control){
+    if(!ply.controls.mouse_control){
       DRAW.fillText("w is shoot",20,120);
       DRAW.fillText("ad is turn",20,140);
       DRAW.fillText("arrow keys are move",20,160);
