@@ -55,4 +55,5 @@ var drawScene = function(){
     drawActionSubFunction(ply.rt);
     drawPlayer(ply);
     drawStatsSubFunction();
+    window.requestAnimationFrame(drawScene);
 };
