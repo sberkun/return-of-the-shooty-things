@@ -1,4 +1,5 @@
-
+var spriteSheet = new Image();
+    spriteSheet.src = "ppl2.png";
 
 var drawActionSubFunction = function(rrr){
   DRAW.save();
