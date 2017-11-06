@@ -69,7 +69,7 @@ var updateCanDieYetPlayer = function(theply){
     var tttvx = 0;
     var tttvy = 0;
     
-    if(mouse_control){
+    if(theply.controls.mouse_control){
       if(theply.controls.www){tttvx-=theply.speed*Math.sin(theply.rt);tttvy-=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.sss){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.aaa){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
