@@ -149,9 +149,9 @@ var ply = {
     },
 };
 ply.drawingIMG.src = "ppl2.png";
-ply.drawing = function(){
+var drawPlayer = function(theplayer){
   //circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
-  DRAW.drawImage(ply.drawingIMG,0,0,128,128,CENTERSCREEN.x-64,CENTERSCREEN.y-64,128,128);
+  DRAW.drawImage(theplayer.drawingIMG,0,0,128,128,CENTERSCREEN.x-64,CENTERSCREEN.y-64,128,128);
 };
 ply.turret1.fire = function(fff){
     if(fireready){if(fff){
@@ -175,9 +175,9 @@ ply.turret2.fire = function(fff){
 ply.die = function(){
   document.body.innerHTML = "ur bad kid";
 };
-ply.updateCanDieYet = function(){
-  if(this.hull.t<0) return true;
-  if(this.hull.t<this.hull.st) this.hull.t+=this.hull.regen;
+var updateCanDieYetPlayer = function(theply){
+  if(theply.hull.t<0) return true;
+  if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
   
   var tttvx = 0;
   var tttvy = 0;
