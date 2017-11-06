@@ -9,9 +9,8 @@ var UPDATEALL = function() {
         }
     }
     
-    drawScene();
-    
 };
 
 
 window.setTimeout(function(){window.setInterval(UPDATEALL,15);}, 500);
+window.setTimeout(function(){window.requestAnimationFrame(drawScene);}, 500);
