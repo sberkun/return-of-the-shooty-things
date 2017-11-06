@@ -1,10 +1,10 @@
 
 var UPDATEALL = function() {
 
-    ply.updateCanDieYet();
+    updateCanDieYetPlayer(ply);
     
     for(var b in bullets){
-        if(bullets[b].updateCanDieYet()){
+        if(updateCanDieYetBullet(bullets[b])){
             bullets.splice(b,1);
         }
     }
