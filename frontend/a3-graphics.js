@@ -14,9 +14,9 @@ var drawActionSubFunction = function(rrr){
         rect(ax-1,ay-1,2,2);
     }}
     
-    for(var a in objects){objects[a].drawing();}
-    for(var b in bullets){bullets[b].drawing();}
-    for(var c in peoples){peoples[c].drawing();}
+    for(var a in objects){drawRO(objects[a]);}
+    for(var b in bullets){drawBullet(bullets[b]);}
+    for(var c in peoples){drawPlayer(peoples[c]);}
   DRAW.restore();
   
 };
@@ -52,6 +52,6 @@ var drawStatsSubFunction = function(){
 
 var drawScene = function(){
     drawActionSubFunction(ply.rt);
-    ply.drawing();
+    drawPlayer(ply);
     drawStatsSubFunction();
 };
