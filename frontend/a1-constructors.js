@@ -13,12 +13,12 @@ var RO = function(x,y,w,h){
     this.cx = this.x+this.w/2; //centerX
     this.cy = this.y+this.h/2; //centerY
     this.bubbleR = Math.sqrt(this.w*this.w+this.h*this.h)/2;
-    this.drawing = function(){
-        DRAW.lineWidth = 3;
-        rect(this.x-ply.x+CENTERSCREEN.x,this.y - ply.y+CENTERSCREEN.y,
-            this.w,this.h);
-        DRAW.lineWidth = 1;
-    };
+};
+var drawRO = function(thero){
+    DRAW.lineWidth = 3;
+    rect(thero.x-ply.x+CENTERSCREEN.x,thero.y - ply.y+CENTERSCREEN.y,
+         thero.w,thero.h);
+    DRAW.lineWidth = 1;
 };
 var bullet = function(x,y,s,r,t,d){
     this.x = x;
@@ -29,15 +29,15 @@ var bullet = function(x,y,s,r,t,d){
     this.d = d;//diameter
     this.vx = 0-this.s*Math.sin(this.r);
     this.vy = 0-this.s*Math.cos(this.r);
-    this.updateCanDieYet = function(){
-        if(this.t--<0){return true;}
-        this.x+=this.vx;
-        this.y+=this.vy;
-        return false;
-    };
-    this.drawing = function(){
-        circle(this.x-ply.x+CENTERSCREEN.x,this.y-ply.y+CENTERSCREEN.y,this.d);
-    };
+};
+var updateCanDieYetBullet = function(thebullet){
+    if(thebullet.t--<0){return true;}
+    thebullet.x+=thebullet.vx;
+    thebullet.y+=thebullet.vy;
+    return false;
+};
+var drawBullet = function(thebullet){
+    circle(thebullet.x-ply.x+CENTERSCREEN.x,thebullet.y-ply.y+CENTERSCREEN.y,thebullet.d);
 };
 
 var createOBsArena = function(){
