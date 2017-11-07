@@ -18,7 +18,7 @@ const testaaa = require('./backend/game.js').exportFunction(peoples);
 
 wss.on('connection', (ws) => {
   peoples[ws.id] = new require('./backend/player.js').exportFunction();
-  console.log(ws.id);
+  ws.send(""+ws.id);
   ws.on('message',(message) => {});
   ws.on('close', ()=>peoples.splice(ws.id,1) );
   //ws.send("hi");
