@@ -38,7 +38,7 @@ document.addEventListener('keyup',function(evant){
     if(evant.keyCode ===221){ply.controls.brr = false;}
 });
 document.addEventListener('click',function(mouseE){
-  if(mouseE.clientX<CENTERSCREEN.statswidth) ply.controls.type.next();
+  if(mouseE.clientX<CENTERSCREEN.statswidth) ply.controls.typey.next();
 });
 document.addEventListener('mousemove',function(mouseE){
   ply.controls.mouseX = mouseE.clientX;
