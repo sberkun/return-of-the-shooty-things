@@ -4,7 +4,7 @@ function player(){
         mouseX:0,
         mouseY:0,
         mouse_control: true,
-        turret_control: false,
+        turret_control: true,
         www:false, aaa:false, sss:false, ddd:false,
         zzz:false, xxx:false, cmc:false, cpc:false,
         clc:false, cuc:false, cdc:false, crc:false,
@@ -71,20 +71,36 @@ var updateCanDieYetPlayer = function(theply){
     var tttvx = 0;
     var tttvy = 0;
     
-    if(theply.controls.mouse_control){
+    if(theply.controls.turret_control){
       if(theply.controls.www){tttvx-=theply.speed*Math.sin(theply.rt);tttvy-=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.sss){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.aaa){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.ddd){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);}
+    }else{
+      if(theply.controls.cuc){tttvx-=theply.speed*Math.sin(theply.rt);tttvy-=theply.speed*Math.cos(theply.rt);}
+      if(theply.controls.cdc){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
+      if(theply.controls.clc){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
+      if(theply.controls.crc){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);} 
+    }
+    if(theply.controls.mouse_control){
+      //control with mouse
+      if(true){fireTurret1(theply,theply.controls.clm);}
+      if(true){fireTurret2(theply,theply.controls.crm);}
+      if(theply.controls.mousehm>1){
+        theply.rt+=theply.rspeed;
+        theply.controls.mousehm--;
+      }else if(theply.controls.mousehm<-1){
+        theply.rt-=theply.rspeed;
+        theply.controls.mousehm++;
+      }else{
+        theply.rt+=theply.rspeed*theply.controls.mousehm;    
+      }
+    }else if(theply.controls.turret_control){
       if(true){fireTurret1(theply,theply.controls.cuc);}
       if(true){fireTurret2(theply,theply.controls.cdc);}
       if(theply.controls.clc){theply.rt+=theply.rspeed;}
       if(theply.controls.crc){theply.rt-=theply.rspeed;}
     }else{
-      if(theply.controls.cuc){tttvx-=theply.speed*Math.sin(theply.rt);tttvy-=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.cdc){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.clc){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.crc){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);}
       if(true){fireTurret1(theply,theply.controls.www);}
       if(true){fireTurret2(theply,theply.controls.sss);}
       if(theply.controls.aaa){theply.rt+=theply.rspeed;}
