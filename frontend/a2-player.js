@@ -5,6 +5,7 @@ function player(){
         mouseY:0,
         mouse_control: true,
         turret_control: true,
+        clm:false, crm:false, mousemh:0,
         www:false, aaa:false, sss:false, ddd:false,
         zzz:false, xxx:false, cmc:false, cpc:false,
         clc:false, cuc:false, cdc:false, crc:false,
@@ -86,15 +87,8 @@ var updateCanDieYetPlayer = function(theply){
       //control with mouse
       if(true){fireTurret1(theply,theply.controls.clm);}
       if(true){fireTurret2(theply,theply.controls.crm);}
-      if(theply.controls.mousehm>1){
-        theply.rt+=theply.rspeed;
-        theply.controls.mousehm--;
-      }else if(theply.controls.mousehm<-1){
-        theply.rt-=theply.rspeed;
-        theply.controls.mousehm++;
-      }else{
-        theply.rt+=theply.rspeed*theply.controls.mousehm;    
-      }
+      //players should be allowed to turn as fast as they want - NOTE: make a slider for rspeed
+      theply.rt+=theply.rspeed*theply.controls.mousehm;
     }else if(theply.controls.turret_control){
       if(true){fireTurret1(theply,theply.controls.cuc);}
       if(true){fireTurret2(theply,theply.controls.cdc);}
