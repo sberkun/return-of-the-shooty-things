@@ -4,7 +4,7 @@ function player(){
         mouseX:0,
         mouseY:0,
         mouse_control: true,
-        turret_control: true,
+        turret_control: false,
         clm:false, crm:false, mousemh:0,
         www:false, aaa:false, sss:false, ddd:false,
         zzz:false, xxx:false, cmc:false, cpc:false,
