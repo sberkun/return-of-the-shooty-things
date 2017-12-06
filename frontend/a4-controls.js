@@ -38,12 +38,24 @@ document.addEventListener('keyup',function(evant){
     if(evant.keyCode ===221){ply.controls.brr = false;}
 });
 document.addEventListener('click',function(mouseE){
-  if(mouseE.clientX<CENTERSCREEN.statswidth) ply.controls.mouse_control = !ply.controls.mouse_control;
+  if(mouseE.clientX<CENTERSCREEN.statswidth) canvas.requestPointerLock();
   if(mouseE.clientY<myCanvas.height/2)  ply.controls.turret_control = !ply.controls.turret_control;
+});
+document.addEventListener('pointerlockchange',function(mouseE){
+    if(document.pointerLockElement === canvas) ply.controls.mouse_control = true;
+    else ply.controls.mouse_control = false;
 });
 document.addEventListener('mousemove',function(mouseE){
   ply.controls.mouseX = mouseE.clientX;
   ply.controls.mouseY = mouseE.clientY;
+  ply.controls.mousehm = mouseE.movementX;
 });
-
+document.addEventListener('mousedown',function(mouseE){
+  if(mouseE.button===0) ply.controls.clm = true;
+  if(mouseE.button===2) ply.controls.crm = true;
+});
+document.addEventListener('mouseup',function(mouseE){
+  if(mouseE.button===0) ply.controls.clm = false;
+  if(mouseE.button===2) ply.controls.crm = false;
+});
 
