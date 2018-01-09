@@ -38,7 +38,7 @@ document.addEventListener('keyup',function(evant){
     if(evant.keyCode ===221){ply.controls.brr = false;}
 });
 document.addEventListener('click',function(mouseE){
-  if(mouseE.clientX<CENTERSCREEN.statswidth) canvas.requestPointerLock();
+  canvas.requestPointerLock();
   if(mouseE.clientY<myCanvas.height/2)  ply.controls.turret_control = !ply.controls.turret_control;
 });
 document.addEventListener('pointerlockchange',function(mouseE){
