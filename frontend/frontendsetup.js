@@ -4,7 +4,14 @@
 const canvas = document.getElementById("myCanvas");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-const DRAW = canvas.getContext("2d");
+  const DRAW = canvas.getContext("2d");
+const BGcanvas = document.getElementById("BGcanvas");
+  BGcanvas.width = window.innerWidth;
+  BGcanvas.height = window.innerHeight;
+  const BGDRAW = BGcanvas.getContext("2d");
+  
+
+
 function line(x1,y1,x2,y2){
   DRAW.beginPath();
   DRAW.moveTo(x1,y1);
@@ -92,7 +99,7 @@ loadingScreen();
   //on contact, bullets disapear and the player is not allowed to move in that direction
   //
     
-//here i explain to myself how this is supposed to work
+//here i explain to myself how this is supposed to work ^
 
 
 
