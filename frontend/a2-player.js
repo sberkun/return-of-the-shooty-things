@@ -88,7 +88,7 @@ var updateCanDieYetPlayer = function(theply){
       if(true){fireTurret1(theply,theply.controls.clm);}
       if(true){fireTurret2(theply,theply.controls.crm);}
       //players should be allowed to turn as fast as they want - NOTE: make a slider for rspeed
-      theply.rt-=theply.rspeed*0.5*theply.controls.mousehm;
+      theply.rt-=theply.rspeed*0.1*theply.controls.mousehm;
       theply.controls.mousehm = 0;
     }else if(theply.controls.turret_control){
       if(true){fireTurret1(theply,theply.controls.cuc);}
