@@ -4,7 +4,7 @@ function player(){
         mouseX:0,
         mouseY:0,
         mouse_control: true,
-        turret_control: false,
+        turret_control: true,
         clm:false, crm:false, mousemh:0,
         www:false, aaa:false, sss:false, ddd:false,
         zzz:false, xxx:false, cmc:false, cpc:false,
@@ -37,6 +37,11 @@ function player(){
           //add stuff later, defence weapon............................................................ 
       };
 }
+
+
+
+var ply = new player();
+
 
 
 var fireTurret1 = function(theply, fff153vvb){
@@ -83,24 +88,13 @@ var updateCanDieYetPlayer = function(theply){
       if(theply.controls.clc){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
       if(theply.controls.crc){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);} 
     }
-    if(theply.controls.mouse_control){
-      //control with mouse
-      if(true){fireTurret1(theply,theply.controls.clm);}
-      if(true){fireTurret2(theply,theply.controls.crm);}
-      //players should be allowed to turn as fast as they want - NOTE: make a slider for rspeed
-      theply.rt-=theply.rspeed*0.1*theply.controls.mousehm;
-      theply.controls.mousehm = 0;
-    }else if(theply.controls.turret_control){
-      if(true){fireTurret1(theply,theply.controls.cuc);}
-      if(true){fireTurret2(theply,theply.controls.cdc);}
-      if(theply.controls.clc){theply.rt+=theply.rspeed;}
-      if(theply.controls.crc){theply.rt-=theply.rspeed;}
-    }else{
-      if(true){fireTurret1(theply,theply.controls.www);}
-      if(true){fireTurret2(theply,theply.controls.sss);}
-      if(theply.controls.aaa){theply.rt+=theply.rspeed;}
-      if(theply.controls.ddd){theply.rt-=theply.rspeed;}
-    }
+
+    //control with mouse
+    if(true){fireTurret1(theply,theply.controls.clm);}
+    if(true){fireTurret2(theply,theply.controls.crm);}
+    //players should be allowed to turn as fast as they want - NOTE: make a slider for rspeed
+    theply.rt-=theply.rspeed*0.1*theply.controls.mousehm;
+    theply.controls.mousehm = 0;
   
     if(tttvx*tttvx+tttvy*tttvy-theply.speed*theply.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
     theply.vx+=tttvx;
@@ -123,4 +117,3 @@ var updateCanDieYetPlayer = function(theply){
 
 
 
-var ply = new player();
