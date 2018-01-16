@@ -39,11 +39,11 @@ document.addEventListener('keyup',function(evant){
 });
 document.addEventListener('click',function(mouseE){
   canvas.requestPointerLock();
-  if(mouseE.clientY<myCanvas.height/2)  ply.controls.turret_control = !ply.controls.turret_control;
+  //if(mouseE.clientY<myCanvas.height/2)  ply.controls.turret_control = !ply.controls.turret_control;
 });
 document.addEventListener('pointerlockchange',function(mouseE){
-    if(document.pointerLockElement === canvas) ply.controls.mouse_control = true;
-    else ply.controls.mouse_control = false;
+    //if(document.pointerLockElement === canvas) ply.controls.mouse_control = true;
+    //else ply.controls.mouse_control = false;
 });
 document.addEventListener('mousemove',function(mouseE){
   ply.controls.mouseX = mouseE.clientX;
