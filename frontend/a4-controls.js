@@ -48,7 +48,7 @@ document.addEventListener('pointerlockchange',function(mouseE){
 document.addEventListener('mousemove',function(mouseE){
   ply.controls.mouseX = mouseE.clientX;
   ply.controls.mouseY = mouseE.clientY;
-  if(!isNaN(mouseE.movementX)) ply.controls.mousehm = mouseE.movementX;
+  //if(!isNaN(mouseE.movementX)) ply.controls.mousehm = mouseE.movementX;
 });
 document.addEventListener('mousedown',function(mouseE){
   if(mouseE.button===0) ply.controls.clm = true;
