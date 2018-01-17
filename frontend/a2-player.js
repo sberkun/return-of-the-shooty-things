@@ -1,26 +1,9 @@
 function player(){
-      var ply = this;
-      this.controls = {
-        mouseX:0,
-        mouseY:0,
-        mouse_control: true,
-        turret_control: true,
-        clm:false, crm:false, mousehm:0,
-        www:false, aaa:false, sss:false, ddd:false,
-        zzz:false, xxx:false, cmc:false, cpc:false,
-        clc:false, cuc:false, cdc:false, crc:false,
-        csc:false,
-        brl:false, brr:false,
-        fireon: false,
-        fireready: true,
-        firetime: 0,
-      };
       this.vx=0;this.vy=0;
       this.friction=0.9;this.getFriction=0.9;
       this.x=0;this.y=0;
       this.rt=0;this.speed=0.4;this.rspeed=2*Math.PI/180;
       this.d=64; //diameter
-      
       this.hull={
         st: 50000,
         t:  50000,
@@ -41,7 +24,25 @@ function player(){
 
 
 var ply = new player();
-
+      ply.controls = {
+        mouseX:0,
+        mouseY:0,
+        mouse_control: true,
+        turret_control: true,
+        clm:false, crm:false, mousehm:0,
+        www:false, aaa:false, sss:false, ddd:false,
+        zzz:false, xxx:false, cmc:false, cpc:false,
+        clc:false, cuc:false, cdc:false, crc:false,
+        csc:false,
+        brl:false, brr:false,
+        fireon: false,
+        fireready: true,
+        firetime: 0,
+      };
+      ply.fireTurret1 = function(fff153vvb){
+            
+      };
+      ply.fireTurret2 = function(fff153vvb){};
 
 
 var fireTurret1 = function(theply, fff153vvb){
