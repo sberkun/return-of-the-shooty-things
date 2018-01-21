@@ -13,7 +13,7 @@ var drawActionSubFunction = function(rrr){
     for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
       for(var ay = -myCanvas.width-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
         DRAW.rect(ax-1,ay-1,2,2);
-    }} DRAW.stroke;
+    }} DRAW.stroke();
     
     for(var a in objects){drawRO(objects[a]);}
     for(var b in bullets){drawBullet(bullets[b]);}
