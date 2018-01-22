@@ -33,7 +33,7 @@ var ply = new player();
       ply.updateControls = function(){
           
       }
-      ply.update = function(){}{
+      ply.update = function(){
       }
       ply.turret1={
           numshots:5,
