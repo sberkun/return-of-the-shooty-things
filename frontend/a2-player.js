@@ -31,7 +31,35 @@ var ply = new player();
         firetime: 0,
       };
       ply.updateControls = function(){
-          
+            var tttvx = 0;
+            var tttvy = 0;
+    
+            if(ply.controls.turret_control){
+              if(ply.controls.www){tttvx-=ply.speed*Math.sin(ply.rt);tttvy-=ply.speed*Math.cos(ply.rt);}
+              if(ply.controls.sss){tttvx+=ply.speed*Math.sin(ply.rt);tttvy+=ply.speed*Math.cos(ply.rt);}
+              if(ply.controls.aaa){tttvy+=ply.speed*Math.sin(ply.rt);tttvx-=ply.speed*Math.cos(ply.rt);}
+              if(ply.controls.ddd){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);}
+            }else{
+              if(ply.controls.cuc){tttvx-=ply.speed*Math.sin(ply.rt);tttvy-=ply.speed*Math.cos(ply.rt);}
+              if(ply.controls.cdc){tttvx+=ply.speed*Math.sin(ply.rt);tttvy+=ply.speed*Math.cos(ply.rt);}
+              if(ply.controls.clc){tttvy+=ply.speed*Math.sin(ply.rt);tttvx-=ply.speed*Math.cos(ply.rt);}
+              if(ply.controls.crc){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);} 
+            }
+
+            //control with mouse
+            if(true){ply.turret1.fire(ply.controls.clm);}
+            if(true){ply.turret2.fire(ply.controls.clm);}
+            //players should be allowed to turn as fast as they want - NOTE: make a slider for rspeed
+            ply.rt-=ply.controls.rspeed*0.1*ply.controls.mousehm;
+            ply.controls.mousehm = 0;
+  
+            if(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
+            ply.vx+=tttvx;
+            ply.vy+=tttvy;
+            theply.vx = theply.vx*theply.getFriction;
+            theply.vy = theply.vy*theply.getFriction;
+            if(Math.abs(theply.vx)<0.005) theply.vx = 0;
+            if(Math.abs(theply.vy)<0.005) theply.vy = 0;
       }
       ply.update = function(){
       }
@@ -76,39 +104,9 @@ var drawPlayer = function(theplayer){
 var updateCanDieYetPlayer = function(theply){
     if(theply.hull.t<0) return true;
     if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
-  
-    var tttvx = 0;
-    var tttvy = 0;
-    
-    if(theply.controls.turret_control){
-      if(theply.controls.www){tttvx-=theply.speed*Math.sin(theply.rt);tttvy-=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.sss){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.aaa){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.ddd){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);}
-    }else{
-      if(theply.controls.cuc){tttvx-=theply.speed*Math.sin(theply.rt);tttvy-=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.cdc){tttvx+=theply.speed*Math.sin(theply.rt);tttvy+=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.clc){tttvy+=theply.speed*Math.sin(theply.rt);tttvx-=theply.speed*Math.cos(theply.rt);}
-      if(theply.controls.crc){tttvy-=theply.speed*Math.sin(theply.rt);tttvx+=theply.speed*Math.cos(theply.rt);} 
-    }
-
-    //control with mouse
-    if(true){theply.turret1.fire(theply.controls.clm);}
-    if(true){theply.turret2.fire(theply.controls.clm);}
-    //players should be allowed to turn as fast as they want - NOTE: make a slider for rspeed
-    theply.rt-=theply.controls.rspeed*0.1*theply.controls.mousehm;
-    theply.controls.mousehm = 0;
-  
-    if(tttvx*tttvx+tttvy*tttvy-theply.speed*theply.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
-    theply.vx+=tttvx;
-    theply.vy+=tttvy;
-    theply.x+=theply.vx;
-    theply.y+=theply.vy;
-          
-    theply.vx = theply.vx*theply.getFriction;
-    theply.vy = theply.vy*theply.getFriction;
-    if(Math.abs(theply.vx)<0.005) theply.vx = 0;
-    if(Math.abs(theply.vy)<0.005) theply.vy = 0;
+           
+    ply.x+=ply.vx;
+    ply.y+=ply.vy;   
 };
 
 
