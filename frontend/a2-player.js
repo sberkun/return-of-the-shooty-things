@@ -9,6 +9,8 @@ function player(){
         t:  50000,
         regen: 200,
       };
+      
+      peoples.push(this);
 }
 
 
