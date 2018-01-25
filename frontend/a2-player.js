@@ -111,8 +111,8 @@ var drawPlayer = function(theply){
 var updateCanDieYetPlayer = function(theply){
     if(theply.hull.t<0) return true;
     if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
-    ply.x+=ply.vx;
-    ply.y+=ply.vy;   
+    theply.x+=theply.vx;
+    theply.y+=theply.vy;   
 };
 
 
