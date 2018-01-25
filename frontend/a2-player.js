@@ -100,7 +100,10 @@ var diePlayer = function(theply){
 };
 var drawPlayer = function(theplayer){
   //circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
+  DRAW.save();
+  DRAW.rotate(theplayer.rt);
   DRAW.drawImage(spriteSheet,0,0,128,128,CENTERSCREEN.x-64,CENTERSCREEN.y-64,128,128);
+  DRAW.restore();
 };
 var updateCanDieYetPlayer = function(theply){
     if(theply.hull.t<0) return true;
