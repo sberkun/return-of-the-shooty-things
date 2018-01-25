@@ -1,7 +1,11 @@
 
 var UPDATEALL = function() {
 
-    for(var p in peoples) updateCanDieYetPlayer(p);
+    for(var p in peoples){
+        if(updateCanDieYetPlayer(peoples[p])){
+            peoples.splice(p,1);
+        }
+    }
     ply.update();
     
     for(var b in bullets){
