@@ -13,7 +13,7 @@ function player(){
 
 
 
-var ply = new player();
+var ply = new player(); peoples.push(ply);
       ply.controls = {
         mouseX:0,
         mouseY:0,
