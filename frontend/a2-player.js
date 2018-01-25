@@ -62,6 +62,7 @@ var ply = new player();
             if(Math.abs(theply.vy)<0.005) theply.vy = 0;
       }
       ply.update = function(){
+            ply.updateControls();
       }
       ply.turret1={
           numshots:5,
@@ -104,7 +105,6 @@ var drawPlayer = function(theplayer){
 var updateCanDieYetPlayer = function(theply){
     if(theply.hull.t<0) return true;
     if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
-           
     ply.x+=ply.vx;
     ply.y+=ply.vy;   
 };
