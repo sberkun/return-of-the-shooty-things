@@ -56,10 +56,10 @@ var ply = new player(); peoples.push(ply);
             if(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
             ply.vx+=tttvx;
             ply.vy+=tttvy;
-            theply.vx = theply.vx*theply.getFriction;
-            theply.vy = theply.vy*theply.getFriction;
-            if(Math.abs(theply.vx)<0.005) theply.vx = 0;
-            if(Math.abs(theply.vy)<0.005) theply.vy = 0;
+            ply.vx = ply.vx*ply.getFriction;
+            ply.vy = ply.vy*ply.getFriction;
+            if(Math.abs(ply.vx)<0.005) ply.vx = 0;
+            if(Math.abs(ply.vy)<0.005) ply.vy = 0;
       }
       ply.update = function(){
             ply.updateControls();
