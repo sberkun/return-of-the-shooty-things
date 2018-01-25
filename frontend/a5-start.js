@@ -1,7 +1,8 @@
 
 var UPDATEALL = function() {
 
-    updateCanDieYetPlayer(ply);
+    for(var p in peoples) updateCanDieYetPlayer(p);
+    ply.update();
     
     for(var b in bullets){
         if(updateCanDieYetBullet(bullets[b])){
