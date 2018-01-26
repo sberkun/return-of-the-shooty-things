@@ -103,9 +103,9 @@ var diePlayer = function(theply){
 var drawPlayer = function(theply){
   //circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
   DRAW.save();
-      DRAW.translate(theplayer.x-ply.x+CENTERSCREEN.x,theplayer.y-ply.y+CENTERSCREEN.y);
-      DRAW.rotate(theplayer.rt);
-      DRAW.drawImage(spriteSheet,0,0,128,128,-64,-64,128,128);
+      //DRAW.translate(theplayer.x-ply.x+CENTERSCREEN.x,theplayer.y-ply.y+CENTERSCREEN.y);
+      //DRAW.rotate(theplayer.rt);
+      //DRAW.drawImage(spriteSheet,0,0,128,128,-64,-64,128,128);
   DRAW.restore();
 };
 var updateCanDieYetPlayer = function(theply){
