@@ -30,12 +30,7 @@ var bullet = function(x,y,s,r,t,d){
     this.vx = 0-this.s*Math.sin(this.r);
     this.vy = 0-this.s*Math.cos(this.r);
 };
-var updateCanDieYetBullet = function(thebullet){
-    if(thebullet.t--<0){return true;}
-    thebullet.x+=thebullet.vx;
-    thebullet.y+=thebullet.vy;
-    return false;
-};
+
 var drawBullet = function(thebullet){
     circle(thebullet.x-ply.x+CENTERSCREEN.x,thebullet.y-ply.y+CENTERSCREEN.y,thebullet.d);
 };
