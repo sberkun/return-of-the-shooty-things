@@ -40,7 +40,7 @@ var drawBullet = function(thebullet){
     circle(thebullet.x-ply.x+CENTERSCREEN.x,thebullet.y-ply.y+CENTERSCREEN.y,thebullet.d);
 };
 
-var createOBsArena = function(){
+(function createOBsArena(){
   for(var a = 0;a<5;a+=2){for(var b=0;b<5;b+=2){
       var ss = 70-10*Math.abs(2-a)-5*Math.abs(2-b);
       objects.push(new RO(a*200-400-ss,b*200-400-ss,ss*2,ss*2));
@@ -52,5 +52,4 @@ var createOBsArena = function(){
   objects.push(new RO(-ws-wt,ws,2*ws+wt,wt));
   objects.push(new RO(ws,-ws,wt,2*ws+wt));
   objects.push(new RO(-ws,-ws-wt,2*ws+wt,wt));
-};
-createOBsArena();
+})();
