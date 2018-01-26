@@ -97,9 +97,6 @@ var ply = new player(); peoples.push(ply);
       ply.turret2.fire = function(fff153vvb){};
 
 
-
-var diePlayer = function(theply){
-};
 var drawPlayer = function(theply){
   //circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
   DRAW.save();
@@ -108,12 +105,7 @@ var drawPlayer = function(theply){
       DRAW.drawImage(spriteSheet,0,0,128,128,-64,-64,128,128);
   DRAW.restore();
 };
-var updateCanDieYetPlayer = function(theply){
-    if(theply.hull.t<0) return true;
-    if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
-    theply.x+=theply.vx;
-    theply.y+=theply.vy;   
-};
+
 
 
 
