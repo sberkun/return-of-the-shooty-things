@@ -79,7 +79,7 @@ var ply = new player();
       ply.turret1.fire = function(fff153vvb){
           if(ply.controls.fireready){if(fff153vvb){
             for(var a=ply.turret1.numshots;a>0;a--){
-              bullet(
+              new bullet(
                   ply.x-ply.turret1.shaftlength*(Math.sin(ply.rt)),
                   ply.y-ply.turret1.shaftlength*(Math.cos(ply.rt)),
                   ply.turret1.bulletspeed,
