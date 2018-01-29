@@ -9,13 +9,13 @@ function player(){
         t:  50000,
         regen: 200,
       };
+      peoples.push(this);
 }
 
 var testJim = new player();
 testJim.x = 100; testJim.y = -100; testJim.rt = 10;
-peoples.push(testJim);
 
-var ply = new player(); peoples.push(ply);
+var ply = new player(); 
       ply.controls = {
         mouseX:0,
         mouseY:0,
