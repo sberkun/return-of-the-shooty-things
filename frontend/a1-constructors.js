@@ -45,8 +45,8 @@ var drawBullet = function(thebullet){
   objects.splice(4,1);
   var wt = 20;
   var ws = 1000;
-  new RO(-ws-wt,-ws-wt,wt,2*ws+wt);
-  new RO(-ws-wt,ws,2*ws+wt,wt);
-  new RO(ws,-ws,wt,2*ws+wt);
-  new RO(-ws,-ws-wt,2*ws+wt,wt);
+  RO(-ws-wt,-ws-wt,wt,2*ws+wt);
+  RO(-ws-wt,ws,2*ws+wt,wt);
+  RO(ws,-ws,wt,2*ws+wt);
+  RO(-ws,-ws-wt,2*ws+wt,wt);
 })();
