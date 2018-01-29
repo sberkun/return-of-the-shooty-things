@@ -40,7 +40,7 @@ var drawBullet = function(thebullet){
 (function createOBsArena(){
   for(var a = 0;a<5;a+=2){for(var b=0;b<5;b+=2){
       var ss = 70-10*Math.abs(2-a)-5*Math.abs(2-b);
-      objects.push(new RO(a*200-400-ss,b*200-400-ss,ss*2,ss*2));
+      RO(a*200-400-ss,b*200-400-ss,ss*2,ss*2);
   }}
   objects.splice(4,1);
   var wt = 20;
