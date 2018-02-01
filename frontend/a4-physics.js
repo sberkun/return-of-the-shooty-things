@@ -63,3 +63,7 @@ function sortBullets(){
         new bbBox(x,y,w,h,3,b,bullets.length);
     }  
 }
+
+
+function updatePhysics(){
+}
