@@ -88,7 +88,7 @@ function setupbbObjects(){
         y1=objects[0].y,
         x2=objects[0].x+objects[0].w,
         y2=objects[0].y+objects[0].h;
-    for(let a=0;a<people.length;a++){
+    for(let a=0;a<objects.length;a++){
         if(objects[a].x               <x1) x1=objects[a].x;
         if(objects[a].y               <y1) y1=objects[a].y;
         if(objects[a].x+objects[a].w  >x2) x2=objects[a].x+objects[a].w;
