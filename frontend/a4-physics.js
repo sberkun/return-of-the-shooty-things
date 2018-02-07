@@ -68,19 +68,19 @@ function setupbbBullets(){
         new bbBox(x,y,w,h,3,b,bullets.length);
     }  
 }
-function setupbbPeople(){
-    if(people.length<1) return;
-    let x1=people[0].x-people[0].d*0.5,
-        y1=people[0].y-people[0].d*0.5,
-        x2=people[0].x+people[0].d*0.5,
-        y2=people[0].y+people[0].d*0.5;
+function setupbbPeoples(){
+    if(peoples.length<1) return;
+    let x1=peoples[0].x-peoples[0].d*0.5,
+        y1=peoples[0].y-peoples[0].d*0.5,
+        x2=peoples[0].x+peoples[0].d*0.5,
+        y2=peoples[0].y+peoples[0].d*0.5;
     for(let a=0;a<people.length;a++){
-        if(people[a].x-people[a].d*0.5<x1) x1=people[a].x-people[a].d*0.5;
-        if(people[a].y-people[a].d*0.5<y1) y1=people[a].y-people[a].d*0.5;
-        if(people[a].x+people[a].d*0.5>x2) x2=people[a].x+people[a].d*0.5;
-        if(people[a].y+people[a].d*0.5>y2) y2=people[a].y+people[a].d*0.5;
+        if(peoples[a].x-peoples[a].d*0.5<x1) x1=peoples[a].x-peoples[a].d*0.5;
+        if(peoples[a].y-peoples[a].d*0.5<y1) y1=peoples[a].y-peoples[a].d*0.5;
+        if(peoples[a].x+peoples[a].d*0.5>x2) x2=peoples[a].x+peoples[a].d*0.5;
+        if(peoples[a].y+peoples[a].d*0.5>y2) y2=peoples[a].y+peoples[a].d*0.5;
     }
-    new bbBox(x1,y1,x2,y2,1,0,people.length);
+    new bbBox(x1,y1,x2,y2,1,0,peoples.length);
 }
 function setupbbObjects(){
     if(objects.length<1) return;
@@ -99,7 +99,7 @@ function setupbbObjects(){
 
 function updatePhysics(){
     //setupbbBullets();
-    setupbbPeople();
+    setupbbPeoples();
     setupbbObjects();
     
     //collisions
