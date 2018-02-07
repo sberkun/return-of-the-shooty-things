@@ -93,6 +93,7 @@ function setupbbObjects(){
         if(objects[a].y               <y1) y1=objects[a].y;
         if(objects[a].x+objects[a].w  >x2) x2=objects[a].x+objects[a].w;
         if(objects[a].y+objects[a].h  >y2) y2=objects[a].y+objects[a].h;
+    }
     new bbBox(x1,y1,x2,y2,0,0,objects.length);
 }
 
