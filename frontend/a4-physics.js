@@ -74,7 +74,7 @@ function setupbbPeoples(){
         y1=peoples[0].y-peoples[0].d*0.5,
         x2=peoples[0].x+peoples[0].d*0.5,
         y2=peoples[0].y+peoples[0].d*0.5;
-    for(let a=0;a<people.length;a++){
+    for(let a=0;a<peoples.length;a++){
         if(peoples[a].x-peoples[a].d*0.5<x1) x1=peoples[a].x-peoples[a].d*0.5;
         if(peoples[a].y-peoples[a].d*0.5<y1) y1=peoples[a].y-peoples[a].d*0.5;
         if(peoples[a].x+peoples[a].d*0.5>x2) x2=peoples[a].x+peoples[a].d*0.5;
