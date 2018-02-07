@@ -26,6 +26,8 @@ function bbBox(x1,y1,x2,y2,type,si,ei){
     this.type=type;        //0=object, 1=player, 2=slow bullet, 3=fast bullet
     this.si=si;this.ei=ei; //this points to the objects in the array from si<= ... <ei
     bounds.push(this);
+    
+                                                                                                              rect(x1,y1,x2-x1,y2-y1); // remove later
 }
 
 function setupbbBullets(){
@@ -71,7 +73,7 @@ function setupbbPeople(){
     let x1=people[0].x-people[0].d*0.5,
         y1=people[0].y-people[0].d*0.5,
         x2=people[0].x+people[0].d*0.5,
-        y2=people[0].y+people[0].d*0.5,
+        y2=people[0].y+people[0].d*0.5;
     for(let a=0;a<people.length;a++){
         if(people[a].x-people[a].d*0.5<x1) x1=people[a].x-people[a].d*0.5;
         if(people[a].y-people[a].d*0.5<y1) y1=people[a].y-people[a].d*0.5;
@@ -85,7 +87,7 @@ function setupbbObjects(){
     let x1=objects[0].x,
         y1=objects[0].y,
         x2=objects[0].x+objects[0].w,
-        y2=objects[0].y+objects[0].h,
+        y2=objects[0].y+objects[0].h;
     for(let a=0;a<people.length;a++){
         if(objects[a].x               <x1) x1=objects[a].x;
         if(objects[a].y               <y1) y1=objects[a].y;
