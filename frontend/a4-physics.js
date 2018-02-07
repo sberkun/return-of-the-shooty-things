@@ -26,8 +26,6 @@ function bbBox(x1,y1,x2,y2,type,si,ei){
     this.type=type;        //0=object, 1=player, 2=slow bullet, 3=fast bullet
     this.si=si;this.ei=ei; //this points to the objects in the array from si<= ... <ei
     bounds.push(this);
-    
-                                                                                                              rect(x1,y1,x2-x1,y2-y1); // remove later
 }
 
 function setupbbBullets(){
@@ -98,11 +96,14 @@ function setupbbObjects(){
 }
 
 function updatePhysics(){
+    
+    bounds = [];
+    
     //setupbbBullets();
     setupbbPeoples();
     setupbbObjects();
     
     //collisions
     
-    bounds = [];
+
 }
