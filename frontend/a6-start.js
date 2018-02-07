@@ -1,6 +1,8 @@
 
 var UPDATEALL = function() {
-
+    
+    updatePhysics();
+    
     for(var p in peoples){
         if(updateCanDieYetPlayer(peoples[p])){
             peoples.splice(p,1);
