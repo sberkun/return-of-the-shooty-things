@@ -43,25 +43,28 @@ function setupbbBullets(){
     
     //set up initial bounding boxes
     if(b>0){ 
-        let x1=bullets[0].x,
-            y1=bullets[0].y,
-            x2=bullets[0].x+bullets[0].vx,
-            y2=bullets[0].y+bullets[0].vy;                                                                           //NOPE: fix
+        let x1=Math.min(bullets[0].x,bullets[0].x+bullets[0].vx),
+            y1=Math.min(bullets[0].y,bullets[0].y+bullets[0].vy),
+            x2=Math.max(bullets[0].x,bullets[0].x+bullets[0].vx),
+            y2=Math.max(bullets[0].y,bullets[0].y+bullets[0].vy); 
         for(a=1;a<b;a++){
-            if(bullets[a].x<x) x  = bullets[a].x;
-            if(bullets[a].y<y) y  = bullets[a].y;
-            if(bullets[a].x+bullets[a].vx>w) w = bullets[a].vx;
-            if(bullets[a].y+bullets[a].vy>h) h = bullets[a].vy;
+            if(Math.min(bullets[a].x,bullets[a].x+bullets[a].vx)<x1) x1=Math.min(bullets[a].x,bullets[a].x+bullets[a].vx);
+            if(Math.min(bullets[a].y,bullets[a].y+bullets[a].vy)<y1) y1=Math.min(bullets[a].y,bullets[a].y+bullets[a].vy);
+            if(Math.max(bullets[a].x,bullets[a].x+bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x+bullets[a].vx);
+            if(Math.max(bullets[a].y,bullets[a].y+bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y+bullets[a].vy);
         }
         new bbBox(x1,y1,x2-x1,y2-y1,2,0,b);
     }
     if(bullets.length>b){
-        let x=bullets[b].x,y=bullets[b].y,w=bullets[b].x+bullets[b].vx,h=bullets[b].y+bullets[b].vy;                //NOPE: fix
+        let x1=Math.min(bullets[b].x,bullets[b].x+bullets[b].vx),
+            y1=Math.min(bullets[b].y,bullets[b].y+bullets[b].vy),
+            x2=Math.max(bullets[b].x,bullets[b].x+bullets[b].vx),
+            y2=Math.max(bullets[b].y,bullets[b].y+bullets[b].vy);
         for(a=b;a<bullets.length;a++){
-            if(bullets[a].x<x) x  = bullets[a].x;
-            if(bullets[a].y<y) y  = bullets[a].y;
-            if(bullets[a].x+bullets[a].vx>w) w = bullets[a].vx;
-            if(bullets[a].y+bullets[a].vy>h) h = bullets[a].vy;
+            if(Math.min(bullets[a].x,bullets[a].x+bullets[a].vx)<x1) x1=Math.min(bullets[a].x,bullets[a].x+bullets[a].vx);
+            if(Math.min(bullets[a].y,bullets[a].y+bullets[a].vy)<y1) y1=Math.min(bullets[a].y,bullets[a].y+bullets[a].vy);
+            if(Math.max(bullets[a].x,bullets[a].x+bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x+bullets[a].vx);
+            if(Math.max(bullets[a].y,bullets[a].y+bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y+bullets[a].vy);
         }
         new bbBox(x,y,w,h,3,b,bullets.length);
     }  
