@@ -102,7 +102,7 @@ function updatePhysics(){
     
     bounds = [];
     
-    //setupbbBullets();
+    setupbbBullets();
     setupbbPeoples();
     setupbbObjects();
     
