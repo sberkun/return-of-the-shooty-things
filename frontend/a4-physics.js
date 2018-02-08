@@ -53,7 +53,7 @@ function setupbbBullets(){
             if(Math.max(bullets[a].x,bullets[a].x+bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x+bullets[a].vx);
             if(Math.max(bullets[a].y,bullets[a].y+bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y+bullets[a].vy);
         }
-        new bbBox(x1,y1,x2-x1,y2-y1,2,0,b);
+        new bbBox(x1,y1,x2,y2,2,0,b);
     }
     if(bullets.length>b){
         let x1=Math.min(bullets[b].x,bullets[b].x+bullets[b].vx),
@@ -66,7 +66,7 @@ function setupbbBullets(){
             if(Math.max(bullets[a].x,bullets[a].x+bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x+bullets[a].vx);
             if(Math.max(bullets[a].y,bullets[a].y+bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y+bullets[a].vy);
         }
-        new bbBox(x,y,w,h,3,b,bullets.length);
+        new bbBox(x1,y1,x2,y2,3,b,bullets.length);
     }  
 }
 function setupbbPeoples(){
