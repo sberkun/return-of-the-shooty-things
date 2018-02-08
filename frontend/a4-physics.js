@@ -29,7 +29,7 @@ function bbBox(x1,y1,x2,y2,type,si,ei){
 }
 
 function setupbbBullets(){
-    if(bullets.length=0) return;
+    if(bullets.length===0) return;
     
     //partitioned by speed>avg : speed<=avg, then sorted by bounding box
     var a=0,b=0,h = null;
