@@ -71,7 +71,7 @@ var ply = new player();
           accuracy:0.6,
           shaftlength:64,
           reloadtime:0,
-          bulletspeed:6
+          bulletspeed:60
       };
       ply.turret2={
           //add stuff later, defence weapon............................................................ 
@@ -85,7 +85,7 @@ var ply = new player();
                   ply.turret1.bulletspeed,
                   (((ply.rt+(Math.random()-0.5)*ply.turret1.accuracy)
                     %(2*Math.PI))+(2*Math.PI))%(2*Math.PI),
-                  100,10
+                  10,5
               );
               ply.hull.t--;
             }
