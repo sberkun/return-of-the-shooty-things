@@ -67,8 +67,8 @@ var ply = new player();
             ply.updateControls();
       }
       ply.turret1={
-          numshots:5,
-          accuracy:0.6,
+          numshots:1,
+          accuracy:0,
           shaftlength:64,
           reloadtime:0,
           bulletspeed:60
