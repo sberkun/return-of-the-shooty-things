@@ -34,7 +34,11 @@ var bullet = function(x,y,s,r,t,d){
 };
 
 var drawBullet = function(thebullet){
-    circle(thebullet.x-ply.x+CENTERSCREEN.x,thebullet.y-ply.y+CENTERSCREEN.y,thebullet.d);
+    DRAW.lineWidth = thebullet.d;
+    var x1 = thebullet.x-ply.x+CENTERSCREEN.x;
+    var y1 = thebullet.y-ply.y+CENTERSCREEN.y;
+    line(x1,y1,x1+thebullet.vx,y1+thebullet.vx); //line will go through object before a hit - think hitscan
+    DRAW.lineWidth = 1;
 };
 
 (function createOBsArena(){
