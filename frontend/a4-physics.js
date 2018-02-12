@@ -29,7 +29,7 @@ function updateMovePlayer(theply){
 var bounds = []; //at the very worst case, will be bullets.length+players.length+objects.length
 function bbBox(x1,y1,x2,y2,type,si,ei){
     this.x1=x1;this.y1=y1;this.x2=x2;this.y2=y2; //corners
-    this.type=type;        //0=object, 1=player, 2=slow bullet, 3=fast bullet
+    this.type=type;        //0=object, 1=player, 2=projectile, 3=bullet
     this.si=si;this.ei=ei; //this points to the objects in the array from si<= ... <ei
     bounds.push(this);
 }
@@ -49,28 +49,28 @@ function setupbbBullets(){
     
     //set up initial bounding boxes
     if(b>0){ 
-        let x1=Math.min(bullets[0].x,bullets[0].x+bullets[0].vx),
-            y1=Math.min(bullets[0].y,bullets[0].y+bullets[0].vy),
-            x2=Math.max(bullets[0].x,bullets[0].x+bullets[0].vx),
-            y2=Math.max(bullets[0].y,bullets[0].y+bullets[0].vy); 
+        let x1=Math.min(bullets[0].x,bullets[0].x-bullets[0].vx),
+            y1=Math.min(bullets[0].y,bullets[0].y-bullets[0].vy),
+            x2=Math.max(bullets[0].x,bullets[0].x-bullets[0].vx),
+            y2=Math.max(bullets[0].y,bullets[0].y-bullets[0].vy); 
         for(a=1;a<b;a++){
-            if(Math.min(bullets[a].x,bullets[a].x+bullets[a].vx)<x1) x1=Math.min(bullets[a].x,bullets[a].x+bullets[a].vx);
-            if(Math.min(bullets[a].y,bullets[a].y+bullets[a].vy)<y1) y1=Math.min(bullets[a].y,bullets[a].y+bullets[a].vy);
-            if(Math.max(bullets[a].x,bullets[a].x+bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x+bullets[a].vx);
-            if(Math.max(bullets[a].y,bullets[a].y+bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y+bullets[a].vy);
+            if(Math.min(bullets[a].x,bullets[a].x-bullets[a].vx)<x1) x1=Math.min(bullets[a].x,bullets[a].x-bullets[a].vx);
+            if(Math.min(bullets[a].y,bullets[a].y-bullets[a].vy)<y1) y1=Math.min(bullets[a].y,bullets[a].y-bullets[a].vy);
+            if(Math.max(bullets[a].x,bullets[a].x-bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x-bullets[a].vx);
+            if(Math.max(bullets[a].y,bullets[a].y-bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y-bullets[a].vy);
         }
-        new bbBox(x1,y1,x2,y2,2,0,b);
+        new bbBox(x1,y1,x2,y2,3,0,b);
     }
     if(bullets.length>b){
-        let x1=Math.min(bullets[b].x,bullets[b].x+bullets[b].vx),
-            y1=Math.min(bullets[b].y,bullets[b].y+bullets[b].vy),
-            x2=Math.max(bullets[b].x,bullets[b].x+bullets[b].vx),
-            y2=Math.max(bullets[b].y,bullets[b].y+bullets[b].vy);
+        let x1=Math.min(bullets[b].x,bullets[b].x-bullets[b].vx),
+            y1=Math.min(bullets[b].y,bullets[b].y-bullets[b].vy),
+            x2=Math.max(bullets[b].x,bullets[b].x-bullets[b].vx),
+            y2=Math.max(bullets[b].y,bullets[b].y-bullets[b].vy);
         for(a=b;a<bullets.length;a++){
-            if(Math.min(bullets[a].x,bullets[a].x+bullets[a].vx)<x1) x1=Math.min(bullets[a].x,bullets[a].x+bullets[a].vx);
-            if(Math.min(bullets[a].y,bullets[a].y+bullets[a].vy)<y1) y1=Math.min(bullets[a].y,bullets[a].y+bullets[a].vy);
-            if(Math.max(bullets[a].x,bullets[a].x+bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x+bullets[a].vx);
-            if(Math.max(bullets[a].y,bullets[a].y+bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y+bullets[a].vy);
+            if(Math.min(bullets[a].x,bullets[a].x-bullets[a].vx)<x1) x1=Math.min(bullets[a].x,bullets[a].x-bullets[a].vx);
+            if(Math.min(bullets[a].y,bullets[a].y-bullets[a].vy)<y1) y1=Math.min(bullets[a].y,bullets[a].y-bullets[a].vy);
+            if(Math.max(bullets[a].x,bullets[a].x-bullets[a].vx)>x2) x2=Math.max(bullets[a].x,bullets[a].x-bullets[a].vx);
+            if(Math.max(bullets[a].y,bullets[a].y-bullets[a].vy)>y2) y2=Math.max(bullets[a].y,bullets[a].y-bullets[a].vy);
         }
         new bbBox(x1,y1,x2,y2,3,b,bullets.length);
     }  
