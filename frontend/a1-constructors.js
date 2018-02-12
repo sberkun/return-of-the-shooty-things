@@ -22,8 +22,8 @@ var drawRO = function(thero){
     DRAW.lineWidth = 1;
 };
 var bullet = function(x,y,s,r,t,d){
-    this.x = x;
-    this.y = y;
+    this.x = x;                           //note: a bullet is a line from x,y to x-vx,y-vy so x,y is LEADING point
+    this.y = y;                           //player will spawn it directly in front, bullets then update
     this.s = s;//speed
     this.r = r;//rotation
     this.t = t;//time
@@ -37,7 +37,7 @@ var drawBullet = function(thebullet){
     DRAW.lineWidth = thebullet.d;
     var x1 = thebullet.x-ply.x+CENTERSCREEN.x;
     var y1 = thebullet.y-ply.y+CENTERSCREEN.y;
-    line(x1,y1,x1-thebullet.vx,y1-thebullet.vy); //bullet updates before, don't worry
+    line(x1,y1,x1-thebullet.vx,y1-thebullet.vy);
     DRAW.lineWidth = 1;
 };
 
