@@ -1,0 +1,7 @@
+is it dead --------->      -|     
+splice stuff -------->     -|------------------ updatecandieyet  -|
+spawn stuff------------>   -|                                     | ---- UPDATEALL fires
+move it------------>       -|                                     |
+correct the move with physics------->  -|-------updatephysics    -|
+say which will die next round------->  -|
+draw (including dead)                         -|-------drawsequence fires whenever it wants, but hopefully in this gap        
