@@ -1,4 +1,6 @@
-is it dead --------->      -|     
+update player controls ---------------> ply.update               -|
+check mail from server ---------------> implementserverupdate    -|
+is it dead --------->      -|                                     |
 splice stuff -------->     -|------------------ updatecandieyet  -|
 spawn stuff------------>   -|                                     | ---- UPDATEALL fires
 move it------------>       -|                                     |
