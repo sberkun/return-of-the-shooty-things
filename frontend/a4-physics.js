@@ -4,26 +4,22 @@
 //projectiles people are slow-moving objects. People and projectiles have circular hitboxes, objects have square hitboxes.
 
 function updateCanDieYetBullet(thebullet){
-    if(thebullet.t--<0){return true;}
-    //previous is (x,y), next is (x+vx,y+vy)
-    
-    
+    if(thebullet.t<=0){return true;}
+    if(thebullet.t<1){                     //effective range
+        thebullet.vx*=thebullet.t;
+        thebullet.vy+=thebullet.t;
+    }
+    t--;
     thebullet.x+=thebullet.vx;
     thebullet.y+=thebullet.vy;
     return false;
 }
 
-function updateMoveBullet(thebullet){
-}
-
 function updateCanDieYetPlayer(theply){
-    if(theply.hull.t<0) return true;
+    if(theply.hull.t<=0) return true;
     if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
     theply.x+=theply.vx;
     theply.y+=theply.vy;   
-}
-
-function updateMovePlayer(theply){
 }
 
 var bounds = []; //at the very worst case, will be bullets.length+players.length+objects.length
