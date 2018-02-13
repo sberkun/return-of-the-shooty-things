@@ -1,9 +1,12 @@
-update player controls ---------------> ply.update               -|
-check mail from server ---------------> implementserverupdate    -|
+update player controls (spawn bullets)----> ply.update           -|
+check mail from server (spawn peoples)--> implementserverupdate  -|
 is it dead --------->      -|                                     |
-splice stuff -------->     -|------------------ updatecandieyet  -|
-spawn stuff------------>   -|                                     | ---- UPDATEALL fires
+splice stuff -------->     -|------------------ updatecandieyet  -| ---- UPDATEALL fires
 move it------------>       -|                                     |
 correct the move with physics------->  -|-------updatephysics    -|
 say which will die next round------->  -|
+
+
 draw (including dead)                         -|-------drawsequence fires whenever it wants, but hopefully in this gap        
+
+updates from server (store for later use)
