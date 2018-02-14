@@ -99,33 +99,7 @@ function setupbbObjects(){
     }
     new bbBox(x1,y1,x2,y2,0,0,objects.length);
 }
-function collidingPO(theperson,theobject){
-    if(
-        theperson.x+theperson.d*0.5<theobject.x||
-        theperson.y+theperson.d*0.5<theobject.y||
-        theperson.x-theperson.d*0.5>theobject.x+theobject.w||
-        theperson.y-theperson.d*0.5>theobject.y+theobject.h
-    ) return false;
-    
-    if(theperson.x<theobject.x){
-        if(theperson.y<theobject.y) 
-            return distsqrd(theperson.x,theperson.y,theobject.x,theobject.y)
-                   <=theperson.d*theperson.d*0.25;
-        if(theperson.y>theobject.y+theobject.h)
-            return distsqrd(theperson.x,theperson.y,theobject.x,theobject.y+theobject.h)
-                   <=theperson.d*theperson.d*0.25;
-    }
-    else if(theperson.x>theobject.x+theobject.w){
-        if(theperson.y<theobject.y) 
-            return distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y)
-                   <=theperson.d*theperson.d*0.25;
-        if(theperson.y>theobject.y+theobject.h)
-            return distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y+theobject.h)
-                   <=theperson.d*theperson.d*0.25;
-    }
-    
-    return true;
-}
+
 function collidingPP(person1,person2){
     return distsqrd(person1.x,person1.y,person2.x,person2.y)<=
         (person1.d+person2.d)*(person1.d+person2.d)*0.25;
@@ -134,6 +108,43 @@ function collidingB1O(thebullet,theobject){
 }
 function collidingB1P(thebullet,theobject){
 }
+function collidingbbBox(boxa,boxb){
+}
+function physicsPO(){
+    function collidingPO(theperson,theobject){
+        if(
+            theperson.x+theperson.d*0.5<theobject.x||
+            theperson.y+theperson.d*0.5<theobject.y||
+            theperson.x-theperson.d*0.5>theobject.x+theobject.w||
+            theperson.y-theperson.d*0.5>theobject.y+theobject.h
+        ) return false;
+        
+        if(theperson.x<theobject.x){
+            if(theperson.y<theobject.y) 
+                return distsqrd(theperson.x,theperson.y,theobject.x,theobject.y)
+                       <=theperson.d*theperson.d*0.25;
+            if(theperson.y>theobject.y+theobject.h)
+                return distsqrd(theperson.x,theperson.y,theobject.x,theobject.y+theobject.h)
+                       <=theperson.d*theperson.d*0.25;
+        }
+        else if(theperson.x>theobject.x+theobject.w){
+            if(theperson.y<theobject.y) 
+                return distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y)
+                       <=theperson.d*theperson.d*0.25;
+            if(theperson.y>theobject.y+theobject.h)
+                return distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y+theobject.h)
+                       <=theperson.d*theperson.d*0.25;
+        }
+        
+        return true;
+    }
+    collidingbbBox.collidingInternals = function(){};
+    collidingbbBox.ar1 = peoples;
+    collidingbbBox.ar2 = objects;
+    
+    collidingbbBox(setupbbPeoples(),setupbbObjects());
+}
+
 
 function updatePhysics(){
     
