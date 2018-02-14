@@ -1,7 +1,7 @@
 var spriteSheet = new Image();
     spriteSheet.src = "ppl2.png";
 var tiles = new Image();
-    tiles.src = "New Piskel.png";
+    tiles.src = "New Piskel.png"; var bananana345bn234k5jn = true;
 
 
 var drawActionSubFunction = function(rrr){
@@ -12,11 +12,14 @@ var drawActionSubFunction = function(rrr){
     DRAW.rotate(rrr);
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
     
+    
+    if(bananana345bn234k5jn){
     var sp = 128; 
     for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
       for(var ay = -myCanvas.width-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
         DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
     }} 
+    }
     
     for(var a in objects){drawRO(objects[a]);}
     for(var b in bullets){drawBullet(bullets[b]);}
