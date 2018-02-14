@@ -9,7 +9,7 @@ function updateCanDieYetBullet(thebullet){
         thebullet.vx*=thebullet.t;
         thebullet.vy+=thebullet.t;
     }
-    t--;
+    thebullet.t--;
     thebullet.x+=thebullet.vx;
     thebullet.y+=thebullet.vy;
     return false;
