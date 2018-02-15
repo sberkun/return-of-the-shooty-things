@@ -22,12 +22,10 @@ function updateCanDieYetPlayer(theply){
     theply.y+=theply.vy;   
 }
 
-var bounds = []; //at the very worst case, will be bullets.length+players.length+objects.length
 function bbBox(x1,y1,x2,y2,type,si,ei){
     this.x1=x1;this.y1=y1;this.x2=x2;this.y2=y2; //corners
     this.type=type;        //0=object, 1=player, 2=projectile, 3=bullet
     this.si=si;this.ei=ei; //this points to the objects in the array from si<= ... <ei
-    bounds.push(this);
 }
 
 function setupbbBullets(){
@@ -139,7 +137,7 @@ function physicsPO(){
         else if(theperson.x>theobject.x+theobject.w){
             if(theperson.y<theobject.y){ 
                 if(distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y)
-                       <=theperson.d*theperson.d*0.25{
+                       <=theperson.d*theperson.d*0.25){
                     ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     return true;
                 }else return false;
