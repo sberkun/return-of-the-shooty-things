@@ -109,6 +109,7 @@ function collidingB1O(thebullet,theobject){
 function collidingB1P(thebullet,theobject){
 }
 function collidingbbBox(boxa,boxb){
+    collidingbbBox.collidingInternals(boxa,boxb);
 }
 function physicsPO(){
     function collidingPO(theperson,theobject){
@@ -119,26 +120,50 @@ function physicsPO(){
             theperson.y-theperson.d*0.5>theobject.y+theobject.h
         ) return false;
         
-        if(theperson.x<theobject.x){
-            if(theperson.y<theobject.y) 
-                return distsqrd(theperson.x,theperson.y,theobject.x,theobject.y)
-                       <=theperson.d*theperson.d*0.25;
-            if(theperson.y>theobject.y+theobject.h)
-                return distsqrd(theperson.x,theperson.y,theobject.x,theobject.y+theobject.h)
-                       <=theperson.d*theperson.d*0.25;
+        else if(theperson.x<theobject.x){
+            if(theperson.y<theobject.y){
+                if(distsqrd(theperson.x,theperson.y,theobject.x,theobject.y)
+                       <=theperson.d*theperson.d*0.25){
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    return true;
+                }else return false;
+            }
+            else if(theperson.y>theobject.y+theobject.h){
+                if(distsqrd(theperson.x,theperson.y,theobject.x,theobject.y+theobject.h)
+                       <=theperson.d*theperson.d*0.25){
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    return true;
+                }else return false;
+            }
         }
         else if(theperson.x>theobject.x+theobject.w){
-            if(theperson.y<theobject.y) 
-                return distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y)
-                       <=theperson.d*theperson.d*0.25;
-            if(theperson.y>theobject.y+theobject.h)
-                return distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y+theobject.h)
-                       <=theperson.d*theperson.d*0.25;
+            if(theperson.y<theobject.y){ 
+                if(distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y)
+                       <=theperson.d*theperson.d*0.25{
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    return true;
+                }else return false;
+            }
+            else if(theperson.y>theobject.y+theobject.h){
+                if(distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y+theobject.h)
+                       <=theperson.d*theperson.d*0.25){
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    return true;
+                }else return false;
+            }
+        }
+        else{
+            //inside the plus sign box
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+            return true;
         }
         
-        return true;
     }
-    collidingbbBox.collidingInternals = function(){};
+    collidingbbBox.collidingInternals = function(boxa,boxb){
+        for(let a=boxa.si;a<boxa.ei;a++)
+        for(let b=boxb.si;b<boxb.ei;b++)
+            if(collidingPO(peoples[a],objects[b])) alert("banana");
+    };
     collidingbbBox.ar1 = peoples;
     collidingbbBox.ar2 = objects;
     
@@ -148,13 +173,6 @@ function physicsPO(){
 
 function updatePhysics(){
     
-    bounds = [];
-    
-    setupbbBullets();
-    setupbbPeoples();
-    setupbbObjects();
-    
-    //collisions
-    
+    physicsPO();
 
 }
