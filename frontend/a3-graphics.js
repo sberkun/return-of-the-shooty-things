@@ -25,8 +25,6 @@ var drawActionSubFunction = function(rrr){
     for(var b in bullets){drawBullet(bullets[b]);}
     for(var c in peoples){drawPlayer(peoples[c]);}
     
-    for(var d in bounds){DRAW.strokeRect(bounds[d].x1-ply.x+CENTERSCREEN.x,bounds[d].y1-ply.y+CENTERSCREEN.y,bounds[d].x2-bounds[d].x1,bounds[d].y2-bounds[d].y1);}
-    
   DRAW.restore();
   
 };
