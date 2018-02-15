@@ -150,11 +150,12 @@ function physicsPO(){
                 }else return false;
             }
         }
-        else{
-            //inside the plus sign box
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-            return true;
-        }
+        
+        
+        //inside the plus sign box
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        return true;
+        
         
     }
     collidingbbBox.collidingInternals = function(boxa,boxb){
