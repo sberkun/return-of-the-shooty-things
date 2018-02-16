@@ -2,7 +2,9 @@ function player(){
       this.vx=0;this.vy=0;
       this.friction=0.9;this.getFriction=0.9;
       this.x=0;this.y=0;
-      this.rt=0;this.speed=0.4;
+      this.accx=0;this.accy=0;
+      this.moveax=0;this.moveay=0;
+      this.rt=0;
       this.d=64; //diameter of circular hitbox
       this.hull={
         st: 50000,
@@ -17,6 +19,7 @@ testJim.x = 100; testJim.y = -100; testJim.rt = 10;
 
 var ply = new player(); 
       ply.controls = {
+        speed:0.4,
         mouseX:0,
         mouseY:0,
         mouse_control: true,
@@ -33,21 +36,24 @@ var ply = new player();
         firetime: 0,
       };
       ply.updateControls = function(){
-            var tttvx = 0;
-            var tttvy = 0;
+            //updates the rt, and resets the acceleration to where the player wants to move
+            
+            var tttvx = 0; //actually acceleration
+            var tttvy = 0; 
+            var ctr = ply.controls;
     
             if(ply.controls.turret_control){
-              if(ply.controls.www){tttvx-=ply.speed*Math.sin(ply.rt);tttvy-=ply.speed*Math.cos(ply.rt);}
-              if(ply.controls.sss){tttvx+=ply.speed*Math.sin(ply.rt);tttvy+=ply.speed*Math.cos(ply.rt);}
-              if(ply.controls.aaa){tttvy+=ply.speed*Math.sin(ply.rt);tttvx-=ply.speed*Math.cos(ply.rt);}
-              if(ply.controls.ddd){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);}
+              if(ctr.www){tttvx-=ctr.speed*Math.sin(ply.rt);tttvy-=ctr.speed*Math.cos(ply.rt);}
+              if(ctr.sss){tttvx+=ctr.speed*Math.sin(ply.rt);tttvy+=ctr.speed*Math.cos(ply.rt);}
+              if(ctr.aaa){tttvy+=ctr.speed*Math.sin(ply.rt);tttvx-=ctr.speed*Math.cos(ply.rt);}
+              if(ctr.ddd){tttvy-=ctr.speed*Math.sin(ply.rt);tttvx+=ctr.speed*Math.cos(ply.rt);}
             }else{
-              if(ply.controls.cuc){tttvx-=ply.speed*Math.sin(ply.rt);tttvy-=ply.speed*Math.cos(ply.rt);}
-              if(ply.controls.cdc){tttvx+=ply.speed*Math.sin(ply.rt);tttvy+=ply.speed*Math.cos(ply.rt);}
-              if(ply.controls.clc){tttvy+=ply.speed*Math.sin(ply.rt);tttvx-=ply.speed*Math.cos(ply.rt);}
-              if(ply.controls.crc){tttvy-=ply.speed*Math.sin(ply.rt);tttvx+=ply.speed*Math.cos(ply.rt);} 
+              if(ctr.cuc){tttvx-=ctr.speed*Math.sin(ply.rt);tttvy-=ctr.speed*Math.cos(ply.rt);}
+              if(ctr.cdc){tttvx+=ctr.speed*Math.sin(ply.rt);tttvy+=ctr.speed*Math.cos(ply.rt);}
+              if(ctr.clc){tttvy+=ctr.speed*Math.sin(ply.rt);tttvx-=ctr.speed*Math.cos(ply.rt);}
+              if(ctr.crc){tttvy-=ctr.speed*Math.sin(ply.rt);tttvx+=ctr.speed*Math.cos(ply.rt);} 
             }
-
+            
             //control with mouse
             if(true){ply.turret1.fire(ply.controls.clm);}
             if(true){ply.turret2.fire(ply.controls.clm);}
@@ -56,12 +62,13 @@ var ply = new player();
             ply.controls.mousehm = 0;
   
             if(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
-            ply.vx+=tttvx;
-            ply.vy+=tttvy;
-            ply.vx = ply.vx*ply.getFriction;
-            ply.vy = ply.vy*ply.getFriction;
-            if(Math.abs(ply.vx)<0.005) ply.vx = 0;
-            if(Math.abs(ply.vy)<0.005) ply.vy = 0;
+            
+            ply.moveax=tttvx;
+            ply.moveay=tttvy;
+            //ply.vx = ply.vx*ply.getFriction;
+            //ply.vy = ply.vy*ply.getFriction;
+            //if(Math.abs(ply.vx)<0.005) ply.vx = 0;
+            //if(Math.abs(ply.vy)<0.005) ply.vy = 0;
       }
       ply.update = function(){
             ply.updateControls();
