@@ -18,8 +18,17 @@ function updateCanDieYetBullet(thebullet){
 function updateCanDieYetPlayer(theply){
     if(theply.hull.t<=0) return true;
     if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
+    
     theply.x+=theply.vx;
-    theply.y+=theply.vy;   
+    theply.y+=theply.vy; 
+    theply.vx += theply.accx;
+    theply.vy += theply.accy;
+    if(Math.abs(theply.vx)<0.005) theply.vx = 0;
+    if(Math.abs(theply.vy)<0.005) theply.vy = 0;
+    theply.accx = theply.moveax;
+    theply.accy = theply.moveay;
+    theply.accx -= theply.vx*theply.vx*theply.getFriction;
+    theply.accy -= theply.vy*theply.vy*theply.getFriction;
 }
 
 function bbBox(x1,y1,x2,y2,type,si,ei){
