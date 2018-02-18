@@ -23,16 +23,12 @@ function updateCanDieYetPlayer(theply){
     theply.y+=theply.vy; 
     theply.vx += theply.accx;
     theply.vy += theply.accy;
+    theply.vx *= theply.getFriction;
+    theply.vy *= theply.getFriction;
     if(Math.abs(theply.vx)<0.005) theply.vx = 0;
     if(Math.abs(theply.vy)<0.005) theply.vy = 0;
     theply.accx = theply.moveax;
     theply.accy = theply.moveay;
-    theply.accx -= theply.accx>0?
-        theply.vx*theply.vx*theply.getFriction:
-        theply.vx*theply.vx*theply.getFriction*-1;
-    theply.accy -= theply.accy>0?
-        theply.vy*theply.vy*theply.getFriction:
-        theply.vy*theply.vy*theply.getFriction*-1;
 }
 
 function bbBox(x1,y1,x2,y2,type,si,ei){
