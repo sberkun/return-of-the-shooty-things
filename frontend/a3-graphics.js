@@ -1,7 +1,10 @@
 var spriteSheet = new Image();
     spriteSheet.src = "ppl2.png";
-var tiles = new Image();
-    tiles.src = "New Piskel.png"; var bananana345bn234k5jn = true;
+var setPatternTiles = function(x,y,w,h){ DRAW.fillStyle = setPatternTiles.pattern; DRAW.fillRect(x,y,w,h); };
+    setPatternTiles.sp = 128;
+    setPatternTiles.img = new Image(setPatternTiles.sp,setPatternTiles.sp);
+    setPatternTiles.img.src = "New Piskel.png"; 
+    setPatternTiles.pattern = DRAW.createPattern(setPatternTiles.img,"repeat");
 
 
 var drawActionSubFunction = function(rrr){
@@ -13,6 +16,9 @@ var drawActionSubFunction = function(rrr){
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
     
     
+    setPatternTiles(-myCanvas.width-ply.x%sp,-myCanvas.width-ply.y%sp,myCanvas.width*2,myCanvas.height*2);
+    DRAW.fillStyle = "rgb(200,255,255)";
+    /*
     if(bananana345bn234k5jn){
     var sp = 128; 
     for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
@@ -20,6 +26,7 @@ var drawActionSubFunction = function(rrr){
         DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
     }} 
     }
+    */
     
     for(var a in objects){drawRO(objects[a]);}
     for(var b in bullets){drawBullet(bullets[b]);}
