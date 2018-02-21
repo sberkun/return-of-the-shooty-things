@@ -16,22 +16,21 @@ var drawActionSubFunction = function(rrr){
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
     
     
-    setPatternTiles(
-        -myCanvas.width-ply.x%setPatternTiles.sp,
-        -myCanvas.width-ply.y%setPatternTiles.sp,
+    /*setPatternTiles(
+        -1*myCanvas.width-ply.x%setPatternTiles.sp,
+        -1*myCanvas.height-ply.y%setPatternTiles.sp,
         myCanvas.width*2,
         myCanvas.height*2
     );
-    DRAW.fillStyle = "rgb(200,255,255)";
-    /*
-    if(bananana345bn234k5jn){
+    DRAW.fillStyle = "rgb(200,255,255)";*/
+    
     var sp = 128; 
     for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
-      for(var ay = -myCanvas.width-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
-        DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
+      for(var ay = -myCanvas.height-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
+        //DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
+          rect(ax,ay,sp,sp);
     }} 
-    }
-    */
+   
     
     for(var a in objects){drawRO(objects[a]);}
     for(var b in bullets){drawBullet(bullets[b]);}
