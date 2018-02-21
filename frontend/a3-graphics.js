@@ -16,7 +16,12 @@ var drawActionSubFunction = function(rrr){
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
     
     
-    setPatternTiles(-myCanvas.width-ply.x%sp,-myCanvas.width-ply.y%sp,myCanvas.width*2,myCanvas.height*2);
+    setPatternTiles(
+        -myCanvas.width-ply.x%setPatternTiles.sp,
+        -myCanvas.width-ply.y%setPatternTiles.sp,
+        myCanvas.width*2,
+        myCanvas.height*2
+    );
     DRAW.fillStyle = "rgb(200,255,255)";
     /*
     if(bananana345bn234k5jn){
