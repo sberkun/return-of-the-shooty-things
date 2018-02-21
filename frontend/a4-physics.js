@@ -168,7 +168,7 @@ function physicsPO(){
     collidingbbBox.collidingInternals = function(boxa,boxb){
         for(let a=boxa.si;a<boxa.ei;a++)
         for(let b=boxb.si;b<boxb.ei;b++)
-            if(collidingPO(peoples[a],objects[b])) alert("banana");
+            if(collidingPO(peoples[a],objects[b]));
     };
     collidingbbBox.ar1 = peoples;
     collidingbbBox.ar2 = objects;
