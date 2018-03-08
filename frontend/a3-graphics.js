@@ -1,10 +1,18 @@
 var spriteSheet = new Image();
     spriteSheet.src = "ppl2.png";
-var setPatternTiles = function(x,y,w,h){ DRAW.fillStyle = setPatternTiles.pattern; DRAW.fillRect(x,y,w,h); };
+var setPatternTiles = function(){
+    let maxwh = setPatternTiles.maxwh;
+    let sp = setPatternTiles.sp; 
+    let tiles = setPatternTiles.img;
+    for(var ax = maxwh-ply.x%sp,bx = maxwh*2;ax<=bx;ax+=sp){
+      for(var ay = maxwh-ply.y%sp,by = maxwh*2;ay<=by;ay+=sp){
+        DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
+    }}
+};
     setPatternTiles.sp = 128;
+    setPatternTiles.maxwh = Math.max(myCanvas.width,myCanvas.height);
     setPatternTiles.img = new Image(setPatternTiles.sp,setPatternTiles.sp);
     setPatternTiles.img.src = "New Piskel.png"; 
-    setPatternTiles.pattern = DRAW.createPattern(setPatternTiles.img,"repeat");
 
 
 var drawActionSubFunction = function(rrr){
@@ -15,21 +23,13 @@ var drawActionSubFunction = function(rrr){
     DRAW.rotate(rrr);
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
     
-    let maxwh = Math.max(myCanvas.width,myCanvas.height);
-    setPatternTiles(
-        -1*maxwh-ply.x%setPatternTiles.sp,
-        -1*maxwh-ply.y%setPatternTiles.sp,
-        maxwh*3,
-        maxwh*3
-    );
-    DRAW.fillStyle = "rgb(150,255,255)";
-    
-    /*var sp = 128; 
+    setPatternTiles();
+    /*
+    let sp = 128; 
     for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
       for(var ay = -myCanvas.height-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
-        //DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
-          rect(ax,ay,sp,sp);
-    }}*/ 
+        DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
+    }}*/
    
     
     for(var a in objects){drawRO(objects[a]);}
