@@ -23,13 +23,13 @@ var drawActionSubFunction = function(rrr){
     DRAW.rotate(rrr);
     DRAW.translate(-CENTERSCREEN.x,-CENTERSCREEN.y);
     
-    setPatternTiles();
-    /*
+    //setPatternTiles();
+    
     let sp = 128; 
     for(var ax = -myCanvas.width-ply.x%sp,bx = myCanvas.width*2;ax<=bx;ax+=sp){
       for(var ay = -myCanvas.height-ply.y%sp,by = myCanvas.height*2;ay<=by;ay+=sp){
-        DRAW.drawImage(tiles,0,0,64,64,ax,ay,sp,sp);
-    }}*/
+        DRAW.drawImage(setPatternTiles.img,0,0,64,64,ax,ay,sp,sp);
+    }}
    
     
     for(var a in objects){drawRO(objects[a]);}
