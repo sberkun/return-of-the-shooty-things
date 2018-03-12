@@ -175,14 +175,10 @@ const physicsPO = (function(){
     let collidingInternals = function(boxa,boxb){
         for(let a=boxa.si;a<boxa.ei;a++)
         for(let b=boxb.si;b<boxb.ei;b++)
-            if(collidingPO(peoples[a],objects[b]));
+            if(collidingPO(peoples[a],objects[b])) alert();
     };
-
-    return function(){
-        makecollidingbbBox(collidingInternals,peoples,objects)
-            (setupbbPeoples(),setupbbObjects());
-    };
-    //makecollidingbbBox returns a recursive function that accepts two arguments
+    let collidetheboxes = makecollidingbbBox(collidingInternals,peoples,objects);
+    return function(){collidetheboxes(setupbbPeoples(),setupbbObjects());};
 })();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
