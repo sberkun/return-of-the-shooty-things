@@ -113,11 +113,18 @@ function collidingB1O(thebullet,theobject){
 }
 function collidingB1P(thebullet,theobject){
 }
-function collidingbbBox(boxa,boxb){
-    collidingbbBox.collidingInternals(boxa,boxb);
-}
-function physicsPO(){
-    function collidingPO(theperson,theobject){
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//under construction VVVV
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function makecollidingbbBox(collidingInternals,ar1,ar2){ return function(boxa,boxb){
+    collidingInternals(boxa,boxb);
+};}
+const physicsPO = (function(){
+    let collidingPO = function(theperson,theobject){
         if(
             theperson.x+theperson.d*0.5<theobject.x||
             theperson.y+theperson.d*0.5<theobject.y||
@@ -165,16 +172,23 @@ function physicsPO(){
         
         
     }
-    collidingbbBox.collidingInternals = function(boxa,boxb){
+    let collidingInternals = function(boxa,boxb){
         for(let a=boxa.si;a<boxa.ei;a++)
         for(let b=boxb.si;b<boxb.ei;b++)
             if(collidingPO(peoples[a],objects[b]));
     };
-    collidingbbBox.ar1 = peoples;
-    collidingbbBox.ar2 = objects;
-    
-    collidingbbBox(setupbbPeoples(),setupbbObjects());
-}
+
+    return function(){
+        makecollidingbbBox(collidingInternals,peoples,objects)
+            (setupbbPeoples(),setupbbObjects());
+    };
+    //makecollidingbbBox returns a recursive function that accepts two arguments
+})();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//under construction ^^^^
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 function updatePhysics(){
