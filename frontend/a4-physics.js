@@ -120,11 +120,10 @@ function collidingB1P(thebullet,theobject){
 //under construction VVVV
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function makecollidingbbBox(collidingInternals,ar1,ar2){ 
-    let resolveboxes = function(boxa,boxb){
+function collidingbbBox(collidingInternals,ar1,ar2,firstbox,secondbox){ 
+    (function resolveboxes(boxa,boxb){
         collidingInternals(boxa,boxb);                //going to be a quadtree recursive function
-    };
-    return resolveboxes;
+    })(firstbox,secondbox);
 }
 const physicsPO = (function(){
     let collidingPO = function(theperson,theobject){
@@ -180,8 +179,9 @@ const physicsPO = (function(){
         for(let b=boxb.si;b<boxb.ei;b++)
             if(collidingPO(peoples[a],objects[b]));
     };
-    let resolveboxes = makecollidingbbBox(collidingInternals,peoples,objects);
-    return function(){resolveboxes(setupbbPeoples(),setupbbObjects());};
+    return function(){
+        collidingbbBox(collidingInternals,peoples,objects,setupbbPeoples(),setupbbObjects());
+    };
 })();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
