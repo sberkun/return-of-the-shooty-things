@@ -5,6 +5,18 @@ var objects = [];
 var bullets = [];
 var peoples = [];
 
+var PhysicsObject = function(x1,y1,x2,y2,m,cx,cy,vx,vy){
+    this.x1 = x1; //bounding box for collision pruning - 1 is top left corner, 2 is bottom right corner
+    this.y1 = y1;
+    this.x2 = x2;
+    this.y2 = y2;
+    this.mass = m; 
+    this.cx = cx; //center of mass
+    this.cy = cy;
+    this.vx = vx; //velocity
+    this.vy = vy;
+}
+
 var RO = function(x,y,w,h){
     this.x = x;
     this.y = y;
