@@ -1,7 +1,14 @@
 //PHYSICS SCHEME
 
-//Bullets are fast moving objects - therefore, their hitbox is a line between their previous location and thier next location
+//Bullets are fast moving objects - therefore, their hitbox is a line between their previous location and thier updated location
 //projectiles people are slow-moving objects. People and projectiles have circular hitboxes, objects have square hitboxes.
+// if collision, move it back AND update the velocity
+// in people/projectiles, collision occurs with both previous and updated, to keep the state "locked" 
+// if an updated person collides with my previous location, and I didn't count it as collision, but then I have to move back,
+// then me and the updated person would cooccupy the same space = bad
+// will not be using three body problem (https://docs.google.com/document/d/1x40NhEqfuzmVtLgXhUuZXa9bUptC4x8aFF3zKoXctwk)
+// , will just resolve every collision sequentially
+
 
 function updateCanDieYetBullet(thebullet){
     if(thebullet.t<=0){return true;}
