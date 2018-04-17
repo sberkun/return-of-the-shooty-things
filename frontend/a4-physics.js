@@ -133,6 +133,15 @@ function collidingbbBox(collidingInternals,ar1,ar2,firstbox,secondbox){
     })(firstbox,secondbox);
 }
 const physicsPO = (function(){
+    let coRest = 0.7;
+    let applyCollisionToPO(theperson,collisionAngle){
+        let sinj = Math.sin(collisionAngle);
+        let cosj = Math.cos(collisionAngle);
+        let magOfDeltaV = -(coRest+1)*(theperson.vx*cosj+theperson.vy*sinj);
+        theperson.vx+=magOfDeltaV*cosj;
+        theperson.vy+=magOfDeltaV*sinj;
+        theperson.moveback();
+    }
     let collidingPO = function(theperson,theobject){
         if(
             theperson.x+theperson.d*0.5<theobject.x||
