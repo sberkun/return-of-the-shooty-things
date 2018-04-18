@@ -62,8 +62,7 @@ var ply = new player();
             ply.rt-=ply.controls.rspeed*0.1*ply.controls.mousehm;
             ply.controls.mousehm = 0;
   
-            //if(tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed>0.01){tttvx*=0.707106781;tttvy*=0.707106781;}
-            document.getElementById("score").innerHTML = tttvx*tttvx+tttvy*tttvy-ply.speed*ply.speed;
+            if(tttvx*tttvx+tttvy*tttvy-ctr.speed*ctr.speed>0.005){tttvx*=0.707106781;tttvy*=0.707106781;}
             
             ply.moveax=tttvx;
             ply.moveay=tttvy;
