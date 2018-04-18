@@ -139,7 +139,7 @@ function collidingbbBox(collidingInternals,ar1,ar2,firstbox,secondbox){
     })(firstbox,secondbox);
 }
 const physicsPO = (function(){
-    let coRest = 0.7;
+    let coRest = 0.05;
     let applyCollisionToPO = function(theperson,collisionAngle){
         let sinj = Math.sin(collisionAngle);
         let cosj = Math.cos(collisionAngle);
