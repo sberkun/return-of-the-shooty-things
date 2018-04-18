@@ -109,7 +109,7 @@ var drawPlayer = function(theply){
   DRAW.save();
       DRAW.translate(theply.x-ply.x+CENTERSCREEN.x,theply.y-ply.y+CENTERSCREEN.y);
       DRAW.rotate(-theply.rt);
-      DRAW.fillStyle = "rgb(128,128,255)";
+      DRAW.fillStyle = "rgb(170,200,255)";
       circle(0,0,theply.d*0.5);
       DRAW.drawImage(spriteSheet,0,0,128,128,-64,-64,128,128);
   DRAW.restore();
