@@ -121,10 +121,7 @@ function setupbbObjects(){
     return new bbBox(x1,y1,x2,y2,0,0,objects.length);
 }
 
-function collidingPP(person1,person2){
-    return distsqrd(person1.x,person1.y,person2.x,person2.y)<=
-        (person1.d+person2.d)*(person1.d+person2.d)*0.25;
-}
+
 function collidingB1O(thebullet,theobject){
 }
 function collidingB1P(thebullet,theobject){
@@ -141,6 +138,12 @@ function collidingbbBox(collidingInternals,ar1,ar2,firstbox,secondbox){
         collidingInternals(boxa,boxb);                //going to be a quadtree recursive function
     })(firstbox,secondbox);
 }
+function collidingbBox(collidingInternals,ar,box){
+    (function resolveboxes(boxa,boxb){
+        collidingInternals(boxa,boxb);                //going to be a quadtree recursive function
+    })(firstbox,secondbox);
+}
+
 const physicsPO = (function(){
     let coRest = 0.05;
     let applyCollisionToPO = function(theperson,collisionAngle){
@@ -222,6 +225,30 @@ const physicsPO = (function(){
     };
 })();
 
+const physicsPP = (function(){
+    let coRest = 0.05;
+    let applyCollisionToPO = function(theperson,collisionAngle){
+        let sinj = Math.sin(collisionAngle);
+        let cosj = Math.cos(collisionAngle);
+        let magOfDeltaV = -(coRest+1)*(theperson.vx*cosj+theperson.vy*sinj);
+        theperson.vx+=magOfDeltaV*cosj;
+        theperson.vy+=magOfDeltaV*sinj;
+        movebackPerson(theperson);
+    }
+    let collidingPO = function(person1,person2){
+        return distsqrd(person1.x,person1.y,person2.x,person2.y)<=
+            (person1.d+person2.d)*(person1.d+person2.d)*0.25;
+    }
+    let collidingInternals = function(boxa,boxb){
+        for(let a=boxa.si;a<boxa.ei;a++)
+        for(let b=boxb.si;b<boxb.ei;b++)
+            if(collidingPO(peoples[a],peoples[b]));
+    };
+    return function(){
+        //collidingbBox(collidingInternals,peoples,objects,setupbbPeoples(),setupbbObjects());
+    };
+})();
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //under construction ^^^^
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -229,7 +256,6 @@ const physicsPO = (function(){
 
 
 function updatePhysics(){
-    
+    physicsPP();
     physicsPO();
-
 }
