@@ -26,6 +26,8 @@ function updateCanDieYetPlayer(theply){
     if(theply.hull.t<=0) return true;
     if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
     
+    theply.px = theply.x;
+    theply.py = theply.y;
     theply.x+=theply.vx;
     theply.y+=theply.vy; 
     theply.vx += theply.moveax;
@@ -34,6 +36,10 @@ function updateCanDieYetPlayer(theply){
     theply.vy *= theply.getFriction;
     if(Math.abs(theply.vx)<0.005) theply.vx = 0;
     if(Math.abs(theply.vy)<0.005) theply.vy = 0;
+}
+function movebackPerson(theply){
+    theply.x = theply.px;
+    theply.y = theply.py;
 }
 
 function bbBox(x1,y1,x2,y2,type,si,ei){
@@ -140,7 +146,7 @@ const physicsPO = (function(){
         let magOfDeltaV = -(coRest+1)*(theperson.vx*cosj+theperson.vy*sinj);
         theperson.vx+=magOfDeltaV*cosj;
         theperson.vy+=magOfDeltaV*sinj;
-        theperson.moveback();
+        movebackPerson(theperson);
     }
     let collidingPO = function(theperson,theobject){
         if(
@@ -154,14 +160,18 @@ const physicsPO = (function(){
             if(theperson.y<theobject.y){
                 if(distsqrd(theperson.x,theperson.y,theobject.x,theobject.y)
                        <=theperson.d*theperson.d*0.25){
-                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    applyCollisionToPO(theperson, 
+                                       Math.atan((theperson.y-theobject.y)/(theperson.x-theobject.x))
+                                      );
                     return true;
                 }else return false;
             }
             else if(theperson.y>theobject.y+theobject.h){
                 if(distsqrd(theperson.x,theperson.y,theobject.x,theobject.y+theobject.h)
                        <=theperson.d*theperson.d*0.25){
-                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    applyCollisionToPO(theperson, 
+                                       Math.atan((theperson.y-theobject.y-theobject.h)/(theperson.x-theobject.x))
+                                      );
                     return true;
                 }else return false;
             }
@@ -170,14 +180,18 @@ const physicsPO = (function(){
             if(theperson.y<theobject.y){ 
                 if(distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y)
                        <=theperson.d*theperson.d*0.25){
-                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    applyCollisionToPO(theperson, 
+                                       Math.atan((theperson.y-theobject.y)/(theperson.x-theobject.x-theobject.w))
+                                      );
                     return true;
                 }else return false;
             }
             else if(theperson.y>theobject.y+theobject.h){
                 if(distsqrd(theperson.x,theperson.y,theobject.x+theobject.w,theobject.y+theobject.h)
                        <=theperson.d*theperson.d*0.25){
-                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    applyCollisionToPO(theperson, 
+                                       Math.atan((theperson.y-theobject.y-theobject.h)/(theperson.x-theobject.x-theobject.w))
+                                      );
                     return true;
                 }else return false;
             }
@@ -185,7 +199,12 @@ const physicsPO = (function(){
         
         
         //inside the plus sign box
-        //////////////////////////////////////////////////////////////////////////////////////////////////
+        if(theperson.x<theobject.x)                     applyCollisionToPO(theperson,0);
+        else if(theperson.y<theobject.y)                applyCollisionToPO(theperson,Math.PI*0.5);
+        else if(theperson.x>theobject.x+theobject.w)    applyCollisionToPO(theperson,Math.PI);
+        else if(theperson.y>theobject.y+theobject.h)    applyCollisionToPO(theperson,Math.PI*1.5);
+        else alert("uh ohs in collision detection, are we in the middle of a block?");
+        
         return true;
         
         
