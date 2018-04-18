@@ -26,8 +26,8 @@ function updateCanDieYetPlayer(theply){
     if(theply.hull.t<=0) return true;
     if(theply.hull.t<theply.hull.st) theply.hull.t+=theply.hull.regen;
     
-    theply.px = theply.x;
-    theply.py = theply.y;
+    //theply.px = theply.x;
+    //theply.py = theply.y;
     theply.x+=theply.vx;
     theply.y+=theply.vy; 
     theply.vx += theply.moveax;
