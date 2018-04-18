@@ -106,8 +106,9 @@ var ply = new player();
 
 
 var drawPlayer = function(theply){
-  //circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
   DRAW.save();
+      DRAW.fillStyle = "rgb(128,128,255)";
+      circle(CENTERSCREEN.x,CENTERSCREEN.y,ply.d*0.5);
       DRAW.translate(theply.x-ply.x+CENTERSCREEN.x,theply.y-ply.y+CENTERSCREEN.y);
       DRAW.rotate(-theply.rt);
       DRAW.drawImage(spriteSheet,0,0,128,128,-64,-64,128,128);
