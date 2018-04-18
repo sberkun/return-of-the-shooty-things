@@ -16,6 +16,8 @@ var UPDATEALL = function() {
             b--;
         }
     }
+        
+    alertMe("hi");
     
     updatePhysics();
 };
