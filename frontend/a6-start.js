@@ -4,22 +4,13 @@ var UPDATEALL = function() {
     ply.update();
     //implementServerUpdate();
         
-    alertMe("sd");
-        
-    for(var p in peoples){
-        if(updateCanDieYetPlayer(peoples[p])){
-            peoples.splice(p,1);
-            p--;
-        }
-    }
-        
-    alertMe("afsg");
-    for(var b in bullets){
-        if(updateCanDieYetBullet(bullets[b])){
-            bullets.splice(b,1);
-            b--;
-        }
-    }
+
+    for(var p in peoples)
+        if(updateCanDieYetPlayer(peoples[p]))
+            peoples.splice(p--,1);
+    for(var b in bullets)
+        if(updateCanDieYetBullet(bullets[b]))
+            bullets.splice(b--,1);
         
     alertMe("hi");
     
