@@ -10,6 +10,11 @@ const BGcanvas = document.getElementById("BGcanvas");
   BGcanvas.height = window.innerHeight;
   const BGDRAW = BGcanvas.getContext("2d");
   
+const alertMe = (function(){
+ let go = true;
+ return function(m){if(go) go=confirm(m);}
+})();
+
 
 
 function line(x1,y1,x2,y2){
