@@ -30,8 +30,10 @@ function updateCanDieYetPlayer(theply){
     theply.py = theply.y;
     theply.x+=theply.vx;
     theply.y+=theply.vy; 
-    theply.vx += theply.moveax;
-    theply.vy += theply.moveay;
+    if(theply.canacc){
+        theply.vx += theply.moveax; 
+        theply.vy += theply.moveay;
+    } else theply.canacc = true;
     theply.vx *= theply.getFriction;
     theply.vy *= theply.getFriction;
     if(Math.abs(theply.vx)<0.005) theply.vx = 0;
@@ -40,6 +42,7 @@ function updateCanDieYetPlayer(theply){
 function movebackPerson(theply){
     theply.x = theply.px;
     theply.y = theply.py;
+    theply.canacc = false;
 }
 
 function bbBox(x1,y1,x2,y2,type,si,ei){
