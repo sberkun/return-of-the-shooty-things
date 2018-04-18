@@ -140,7 +140,7 @@ function collidingbbBox(collidingInternals,ar1,ar2,firstbox,secondbox){
 }
 const physicsPO = (function(){
     let coRest = 0.7;
-    let applyCollisionToPO(theperson,collisionAngle){
+    let applyCollisionToPO = function(theperson,collisionAngle){
         let sinj = Math.sin(collisionAngle);
         let cosj = Math.cos(collisionAngle);
         let magOfDeltaV = -(coRest+1)*(theperson.vx*cosj+theperson.vy*sinj);
