@@ -4,6 +4,7 @@ function player(){
       this.x=0;this.y=0;
       this.px=0;this.py=0;
       this.moveax=0;this.moveay=0;
+      this.canacc = true;
       this.rt=0;
       this.d=64; //diameter of circular hitbox
       this.hull={
