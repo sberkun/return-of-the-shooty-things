@@ -240,7 +240,7 @@ const physicsPP = (function(){
             if(collidingPO(peoples[a],peoples[b]));
     };
     return function(){
-        collidingbBox(collidingInternals,peoples,peoples,setupbbPeoples(),setupbbPeoples());
+        collidingbbBox(collidingInternals,peoples,peoples,setupbbPeoples(),setupbbPeoples());
     };
 })();
 
