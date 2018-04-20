@@ -138,11 +138,6 @@ function collidingbbBox(collidingInternals,ar1,ar2,firstbox,secondbox){
         collidingInternals(boxa,boxb);                //going to be a quadtree recursive function
     })(firstbox,secondbox);
 }
-function collidingbBox(collidingInternals,ar,box){
-    (function resolveboxes(boxa,boxb){
-        collidingInternals(boxa,boxb);                //going to be a quadtree recursive function
-    })(firstbox,secondbox);
-}
 
 const physicsPO = (function(){
     let coRest = 0.05;
@@ -245,7 +240,7 @@ const physicsPP = (function(){
             if(collidingPO(peoples[a],peoples[b]));
     };
     return function(){
-        //collidingbBox(collidingInternals,peoples,objects,setupbbPeoples(),setupbbObjects());
+        collidingbBox(collidingInternals,peoples,peoples,setupbbPeoples(),setupbbPeoples());
     };
 })();
 
