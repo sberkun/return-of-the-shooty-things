@@ -222,22 +222,33 @@ const physicsPO = (function(){
 
 const physicsPP = (function(){
     let coRest = 0.05;
-    let applyCollisionToPO = function(theperson,collisionAngle){
+    let applyCollisionToPP = function(p1,p2,collisionAngle){
         let sinj = Math.sin(collisionAngle);
         let cosj = Math.cos(collisionAngle);
-        let magOfDeltaV = -(coRest+1)*(theperson.vx*cosj+theperson.vy*sinj);
-        theperson.vx+=magOfDeltaV*cosj;
-        theperson.vy+=magOfDeltaV*sinj;
-        movebackPerson(theperson);
+        let impulseMag = (coRest+1)*
+                         ((p1.vx-p2.vx)*cosj+(p1.vy-p2.vy)*sinj)*
+                         p1.mass*p2.mass / (p1.mass+p2.mass);
+        p1.vx-=impulseMag/p1.mass*cosj;
+        p1.vy-=impulseMag/p1.mass*sinj;
+        p2.vx+=impulseMag/p2.mass*cosj;
+        p2.vy+=impulseMag/p2.mass*sinj;
+        
+        movebackPerson(p1);
+        movebackPerson(p2);
     }
     let collidingPO = function(person1,person2){
-        return distsqrd(person1.x,person1.y,person2.x,person2.y)<=
-            (person1.d+person2.d)*(person1.d+person2.d)*0.25;
+        if(distsqrd(person1.x,person1.y,person2.x,person2.y)<=
+            (person1.d+person2.d)*(person1.d+person2.d)*0.25){
+            applyCollisionToPP(person1,person2,Math.atan((person1.y-person2.y)/(person1.x-person2.x)));
+            return true;
+        }
+        else return false;
     }
     let collidingInternals = function(boxa,boxb){
         for(let a=boxa.si;a<boxa.ei;a++)
         for(let b=boxb.si;b<boxb.ei;b++)
-            if(collidingPO(peoples[a],peoples[b]));
+            if(a<b&&collidingPO(peoples[a],peoples[b]));
+            //a<b so objects don't collide twice, and they don't collide with themselves
     };
     return function(){
         collidingbbBox(collidingInternals,peoples,peoples,setupbbPeoples(),setupbbPeoples());
