@@ -94,15 +94,15 @@ function setupbbBullets(){
 }
 function setupbbPeoples(){
     if(peoples.length<1) return;
-    let x1=peoples[0].x-peoples[0].d*0.5,
-        y1=peoples[0].y-peoples[0].d*0.5,
-        x2=peoples[0].x+peoples[0].d*0.5,
-        y2=peoples[0].y+peoples[0].d*0.5;
+    let x1=Math.min(peoples[0].x,peoples[0].px)-peoples[0].d*0.5,
+        y1=Math.min(peoples[0].y,peoples[0].py)-peoples[0].d*0.5,
+        x2=Math.max(peoples[0].x,peoples[0].px)+peoples[0].d*0.5,
+        y2=Math.max(peoples[0].y,peoples[0].py)+peoples[0].d*0.5;
     for(let a=0;a<peoples.length;a++){
-        if(peoples[a].x-peoples[a].d*0.5<x1) x1=peoples[a].x-peoples[a].d*0.5;
-        if(peoples[a].y-peoples[a].d*0.5<y1) y1=peoples[a].y-peoples[a].d*0.5;
-        if(peoples[a].x+peoples[a].d*0.5>x2) x2=peoples[a].x+peoples[a].d*0.5;
-        if(peoples[a].y+peoples[a].d*0.5>y2) y2=peoples[a].y+peoples[a].d*0.5;
+        if(Math.min(peoples[a].x,peoples[a].px)-peoples[a].d*0.5<x1) x1=Math.min(peoples[a].x,peoples[a].px)-peoples[a].d*0.5;
+        if(Math.min(peoples[a].y,peoples[a].py)-peoples[a].d*0.5<y1) y1=Math.min(peoples[a].y,peoples[a].py)-peoples[a].d*0.5;
+        if(Math.max(peoples[a].x,peoples[a].px)+peoples[a].d*0.5>x2) x2=Math.max(peoples[a].x,peoples[a].px)+peoples[a].d*0.5;
+        if(Math.max(peoples[a].y,peoples[a].py)+peoples[a].d*0.5>y2) y2=Math.max(peoples[a].y,peoples[a].py)+peoples[a].d*0.5;
     }
     return new bbBox(x1,y1,x2,y2,1,0,peoples.length);
 }
@@ -237,8 +237,11 @@ const physicsPP = (function(){
         movebackPerson(p2);
     }
     let collidingPO = function(person1,person2){
-        if(distsqrd(person1.x,person1.y,person2.x,person2.y)<=
-            (person1.d+person2.d)*(person1.d+person2.d)*0.25){
+        if(Math.min(
+                distsqrd(person1.x,person1.y,person2.x,person2.y),
+                distsqrd(person1.px,person1.py,person2.x,person2.y),
+                distsqrd(person1.x,person1.y,person2.px,person2.py)
+            )<=(person1.d+person2.d)*(person1.d+person2.d)*0.25){
             applyCollisionToPP(person1,person2,Math.atan((person1.y-person2.y)/(person1.x-person2.x)));
             return true;
         }
