@@ -38,8 +38,9 @@ function updateCanDieYetPlayer(theply){
         //collision just happened, accelleration can only go in direction of velocity
         let scalingfactor = (theply.moveax*theply.vx+theply.moveay*theply.vy)/
                             (theply.vx*theply.vx+theply.vy*theply.vy);
-        theply.vx += scalingfactor*theply.vx;
-        theply.vy += scalingfactor*theply.vy;
+        //theply.vx += scalingfactor*theply.vx;
+        //theply.vy += scalingfactor*theply.vy;
+        //broken :(
     }
     theply.vx *= theply.getFriction;
     theply.vy *= theply.getFriction;
