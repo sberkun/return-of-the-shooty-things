@@ -33,7 +33,14 @@ function updateCanDieYetPlayer(theply){
     if(theply.canacc){
         theply.vx += theply.moveax; 
         theply.vy += theply.moveay;
-    } else theply.canacc = true;
+    } else {
+        theply.canacc = true;
+        //collision just happened, accelleration can only go in direction of velocity
+        let scalingfactor = (theply.moveax*theply.vx+theply.moveay*theply.vy)/
+                            (theply.vx*theply.vx+theply.vy*theply.vy);
+        theply.vx += scalingfactor*theply.vx;
+        theply.vy += scalingfactor*theply.vy;
+    }
     theply.vx *= theply.getFriction;
     theply.vy *= theply.getFriction;
     if(Math.abs(theply.vx)<0.005) theply.vx = 0;
