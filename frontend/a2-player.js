@@ -3,7 +3,8 @@ function player(){
       this.friction=0.9;this.getFriction=0.9;
       this.x=0;this.y=0;
       this.px=0;this.py=0;
-      this.moveax=0;this.moveay=0;
+      this.moveax=0;this.moveay=0; //accelleration from user input
+      this.collax=0;this.collay=0; //accelleration at moment of collision
       this.canacc = true;
       this.rt=0;
       this.d=64; //diameter of circular hitbox
