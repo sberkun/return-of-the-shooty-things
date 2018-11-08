@@ -34,10 +34,15 @@ function updateCanDieYetPlayer(theply){
         theply.vx += theply.moveax; 
         theply.vy += theply.moveay;
     } else {
+        theply.vx += theply.collax;
+        theply.vy += theply.collay;
+        theply.collax = 0;
+        theply.collay = 0;
         theply.canacc = true;
+        
         //collision just happened, accelleration can only go in direction of velocity
-        let scalingfactor = (theply.moveax*theply.vx+theply.moveay*theply.vy)/
-                            (theply.vx*theply.vx+theply.vy*theply.vy);
+        //let scalingfactor = (theply.moveax*theply.vx+theply.moveay*theply.vy)/
+        //                    (theply.vx*theply.vx+theply.vy*theply.vy);
         //theply.vx += scalingfactor*theply.vx;
         //theply.vy += scalingfactor*theply.vy;
         //broken :(
@@ -240,6 +245,9 @@ const physicsPP = (function(){
         p1.vy-=impulseMag/p1.mass*sinj;
         p2.vx+=impulseMag/p2.mass*cosj;
         p2.vy+=impulseMag/p2.mass*sinj;
+        
+        let netAcceleration = ((p1.moveax*cosj+p1.moveay*sinj)*p1.mass
+                              -(p2.moveax*cosj+p2.moveay*sinj)*p2.mass)/(p1.mass+p2.mass);
         
         movebackPerson(p1);
         movebackPerson(p2);
