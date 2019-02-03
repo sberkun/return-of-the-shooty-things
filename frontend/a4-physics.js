@@ -30,7 +30,7 @@ function updateCanDieYetPlayer(theply){
     theply.py = theply.y;
     theply.x+=theply.vx;
     theply.y+=theply.vy; 
-    if(theply.canacc||true){               //||true should not be here: just testing
+    if(theply.canacc||false){               //||true should not be here: just testing
         theply.vx += theply.moveax; 
         theply.vy += theply.moveay;
     } else {
