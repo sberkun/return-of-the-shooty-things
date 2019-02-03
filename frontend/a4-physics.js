@@ -234,7 +234,7 @@ const physicsPO = (function(){
 })();
 
 const physicsPP = (function(){
-    let coRest = 0.05;
+    let coRest = 0.95;
     let applyCollisionToPP = function(p1,p2,collisionAngle){
         let sinj = Math.sin(collisionAngle);
         let cosj = Math.cos(collisionAngle);
