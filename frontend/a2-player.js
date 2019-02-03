@@ -1,6 +1,6 @@
 function player(){
       this.vx=0;this.vy=0;this.mass=10;
-      this.friction=0.9;this.getFriction=0.9;
+      this.friction=0.97;this.getFriction=0.97;
       this.x=0;this.y=0;
       this.px=0;this.py=0;
       this.moveax=0;this.moveay=0; //accelleration from user input
