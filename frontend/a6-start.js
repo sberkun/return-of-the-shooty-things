@@ -11,8 +11,6 @@ var UPDATEALL = function() {
     for(var b in bullets)
         if(updateCanDieYetBullet(bullets[b]))
             bullets.splice(b--,1);
-        
-    alertMe("hi");
     
     updatePhysics();
 };
